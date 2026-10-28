@@ -4,7 +4,7 @@ const path = require('path');
 const { exec } = require('child_process');
 
 const PORT = 3000;
-const ROOT_DIR = __dirname;
+const ROOT_DIR = path.resolve(__dirname, '..');
 
 // Carpetas o archivos del sistema a ignorar en la raíz
 const IGNORED_ROOT_DIRS = new Set([
@@ -12,7 +12,9 @@ const IGNORED_ROOT_DIRS = new Set([
   '.git',
   '.gemini',
   '.vscode',
-  '.idea'
+  '.idea',
+  'App',
+  'app'
 ]);
 
 // Mime types para archivos estáticos
@@ -64,10 +66,13 @@ function getProjectStructure() {
             }
           }
 
+          const theoryFile = moduleFiles.find(f => f.isFile() && f.name.endsWith('.md'));
+
           modules.push({
             name: modItem.name,
             relativePath: path.join(categoryName, modItem.name).replace(/\\/g, '/'),
-            hasTheory: fs.existsSync(path.join(modulePath, 'Modulo.md')),
+            hasTheory: !!theoryFile,
+            theoryFileName: theoryFile ? theoryFile.name : null,
             exercises
           });
         }
@@ -172,10 +177,11 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Servir archivos estáticos del frontend (index.html, styles.css, app.js, etc.)
-  let filePath = path.join(ROOT_DIR, pathname === '/' ? 'index.html' : pathname);
+  // Servir archivos estáticos del frontend (index.html, styles.css, app.js, etc.) desde la carpeta App
+  const appDir = __dirname;
+  let filePath = path.join(appDir, pathname === '/' ? 'index.html' : pathname);
 
-  if (!filePath.startsWith(ROOT_DIR)) {
+  if (!filePath.startsWith(appDir)) {
     res.writeHead(403);
     return res.end('Acceso denegado');
   }

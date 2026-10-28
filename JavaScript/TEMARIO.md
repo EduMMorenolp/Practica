@@ -24,19 +24,19 @@
 ---
 
 ## Módulo 1: Fundamentos y Sintaxis Básica
-*Ruta: [`Modulo 1/`](./Modulo%201/)*
+*Ruta: [`Modulo 1 - Fundamentos y Sintaxis Basica/`](./Modulo%201%20-%20Fundamentos%20y%20Sintaxis%20Basica/)*
 
-- **Teoría del Módulo**: [Modulo.md](./Modulo%201/Modulo.md)
-- **1. Salidas y Ejecución**: [01_salidas.js](./Modulo%201/01_salidas.js)
+- **Teoría del Módulo**: [Modulo 1 - Fundamentos y Sintaxis Basica.md](./Modulo%201%20-%20Fundamentos%20y%20Sintaxis%20Basica/Modulo%201%20-%20Fundamentos%20y%20Sintaxis%20Basica.md)
+- **1. Salidas y Ejecución**: [01_salidas.js](./Modulo%201%20-%20Fundamentos%20y%20Sintaxis%20Basica/01_salidas.js)
   - `console.log()`, `console.info()`, `console.warn()`, `console.error()`, `console.table()`, `console.time()`.
-- **2. Variables y Constantes**: [02_variables_y_constantes.js](./Modulo%201/02_variables_y_constantes.js)
+- **2. Variables y Constantes**: [02_variables_y_constantes.js](./Modulo%201%20-%20Fundamentos%20y%20Sintaxis%20Basica/02_variables_y_constantes.js)
   - `const` (inmutabilidad de identificador), `let` (alcance de bloque), `var` (alcance de función y *hoisting*).
-- **3. Tipos de Datos Primitivos**: [03_tipos_de_datos.js](./Modulo%201/03_tipos_de_datos.js)
+- **3. Tipos de Datos Primitivos**: [03_tipos_de_datos.js](./Modulo%201%20-%20Fundamentos%20y%20Sintaxis%20Basica/03_tipos_de_datos.js)
   - `string`, `number`, `boolean`, `null`, `undefined`, `symbol`, `bigint`.
   - Operador `typeof` y la peculiaridad de `typeof null === "object"`.
   - Coerción implícita vs conversión explícita (`Number()`, `String()`, `Boolean()`).
   - Valores *truthy* y *falsy*.
-- **4. Operadores**: [04_operadores.js](./Modulo%201/04_operadores.js)
+- **4. Operadores**: [04_operadores.js](./Modulo%201%20-%20Fundamentos%20y%20Sintaxis%20Basica/04_operadores.js)
   - **4.1 Aritméticos**: Suma (`+`), resta (`-`), multiplicación (`*`), división (`/`), módulo o resto (`%`), exponente (`**`).
   - **4.2 Asignación**: `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `**=`.
   - **4.3 Comparación**: Igualdad estricta (`===`, `!==`) vs débil (`==`, `!=`), relacionales (`>`, `<`, `>=`, `<=`).
@@ -46,62 +46,47 @@
 ---
 
 ## Módulo 2: Control de Flujo y Estructuras Condicionales
-*Ruta: [`Modulo 2/`](./Modulo%202/)*
+*Ruta: [`Modulo 2 - Control de Flujo y Condicionales/`](./Modulo%202%20-%20Control%20de%20Flujo%20y%20Condicionales/)*
 
-- **Teoría del Módulo**: [Modulo.md](./Modulo%202/Modulo.md)
-- **1. Condicionales If / Else**: [01_condicionales_if_else.js](./Modulo%202/01_condicionales_if_else.js)
+- **Teoría del Módulo**: [Modulo 2 - Control de Flujo y Condicionales.md](./Modulo%202%20-%20Control%20de%20Flujo%20y%20Condicionales/Modulo%202%20-%20Control%20de%20Flujo%20y%20Condicionales.md)
+- **1. Condicionales If / Else**: [01_condicionales_if_else.js](./Modulo%202%20-%20Control%20de%20Flujo%20y%20Condicionales/01_condicionales_if_else.js)
   - `if`, `else if`, `else`, condiciones compuestas y buenas prácticas.
-- **2. Operador Ternario**: [02_operador_ternario.js](./Modulo%202/02_operador_ternario.js)
+- **2. Operador Ternario**: [02_operador_ternario.js](./Modulo%202%20-%20Control%20de%20Flujo%20y%20Condicionales/02_operador_ternario.js)
   - Sintaxis: `condicion ? exp1 : exp2`, salidas directas y formateo condicional.
-- **3. Estructura Switch / Case**: [03_switch_case.js](./Modulo%202/03_switch_case.js)
+- **3. Estructura Switch / Case**: [03_switch_case.js](./Modulo%202%20-%20Control%20de%20Flujo%20y%20Condicionales/03_switch_case.js)
   - Casos específicos, obligatoriedad de `break`, cláusula `default` y agrupación intencional.
-- **4. Bucles While y Do...While**: [04_bucles_while_dowhile.js](./Modulo%202/04_bucles_while_dowhile.js)
+- **4. Bucles While y Do...While**: [04_bucles_while_dowhile.js](./Modulo%202%20-%20Control%20de%20Flujo%20y%20Condicionales/04_bucles_while_dowhile.js)
   - Condición previa (`while`), garantía de ejecución mínima (`do...while`).
-- **5. Bucle For Clásico y Control de Flujo**: [05_bucle_for_break_continue.js](./Modulo%202/05_bucle_for_break_continue.js)
+- **5. Bucle For Clásico y Control de Flujo**: [05_bucle_for_break_continue.js](./Modulo%202%20-%20Control%20de%20Flujo%20y%20Condicionales/05_bucle_for_break_continue.js)
   - `for (inicialización; condición; incremento)`, `continue` (salto de iteración) y `break` (interrupción).
 
 ---
 
 ## Módulo 3: Funciones y Modularización
+*Ruta: [`Modulo 3 - Funciones y Modularizacion/`](./Modulo%203%20-%20Funciones%20y%20Modularizacion/)*
 
-- **3.1 Declaración y Expresiones de Función**
-  - Declaración tradicional (`function sumar(...) { ... }`) y *hoisting*.
-  - Expresión de función anónima y nombrada (`const sumar = function(...) { ... }`).
-- **3.2 Parámetros, Argumentos y Retorno**
-  - Parámetros por defecto (`function saludo(nombre = "Invitado")`).
-  - El objeto implícito `arguments`.
-  - Parámetros rest (`...args`).
-  - Retorno de valores con `return`.
-- **3.3 Funciones Flecha (Arrow Functions - ES6)**
-  - Sintaxis concisa, retorno implícito (`x => x * 2`).
-  - Diferencias fundamentales con funciones tradicionales: ausencia de `this` propio (lexical `this`), ausencia de `arguments`.
-- **3.4 Alcance (Scope), Closures y Contexto (this)**
-  - Scope global, de módulo, de función y de bloque.
-  - Concepto y casos de uso de **Closures** (funciones que recuerdan su entorno léxico).
-  - Funciones de llamada inmediata (IIFE).
-  - Métodos de función: `.call()`, `.apply()`, `.bind()`.
+- **Teoría del Módulo**: [Modulo 3 - Funciones y Modularizacion.md](./Modulo%203%20-%20Funciones%20y%20Modularizacion/Modulo%203%20-%20Funciones%20y%20Modularizacion.md)
+- **1. Declaración y Expresiones de Función**: [01_declaracion_y_expresiones.js](./Modulo%203%20-%20Funciones%20y%20Modularizacion/01_declaracion_y_expresiones.js)
+  - `function` tradicional, expresiones con `const`, comprobación de *hoisting*.
+- **2. Parámetros, Argumentos y Retorno**: [02_parametros_y_retorno.js](./Modulo%203%20-%20Funciones%20y%20Modularizacion/02_parametros_y_retorno.js)
+  - Parámetros por defecto, parámetros Rest (`...args`), salida limpia con *early return*.
+- **3. Funciones Flecha (Arrow Functions - ES6)**: [03_funciones_flecha.js](./Modulo%203%20-%20Funciones%20y%20Modularizacion/03_funciones_flecha.js)
+  - Retorno implícito de valores y objetos literales `() => ({})`, comportamiento léxico de `this`.
+- **4. Alcance (Scope), Closures y Contexto (this)**: [04_scope_closures_y_contexto.js](./Modulo%203%20-%20Funciones%20y%20Modularizacion/04_scope_closures_y_contexto.js)
+  - Scope chain, variables privadas protegidas por *closure*, manipulación con `.call()` y `.bind()`.
 
 ---
 
 ## Módulo 4: Cadenas de Texto y Expresiones Regulares (String & RegExp)
+*Ruta: [`Modulo 4 - String y RegExp/`](./Modulo%204%20-%20String%20y%20RegExp/)*
 
-- **4.1 Propiedades y Métodos de String**
-  - Propiedad `.length`.
-  - Acceso por índice: `str[0]`, `charAt()`, `charCodeAt()`, `fromCharCode()`.
-  - Búsqueda: `indexOf()`, `lastIndexOf()`, `includes()`, `startsWith()`, `endsWith()`.
-  - Extracción: `slice()`, `substring()`, `substr()`.
-  - Transformación: `toUpperCase()`, `toLowerCase()`, `trim()`, `trimStart()`, `trimEnd()`, `repeat()`, `padStart()`, `padEnd()`.
-  - Reemplazo y división: `replace()`, `replaceAll()`, `split()`, `concat()`.
-- **4.2 Template Literals (ES6)**
-  - Interpolación `${expresion}`.
-  - Cadenas multilínea y *Tagged Templates*.
-- **4.3 Expresiones Regulares (RegExp)**
-  - Creación literal (`/patron/flags`) vs constructor (`new RegExp()`).
-  - Modificadores (*flags*): `i` (ignore case), `g` (global), `m` (multiline), `u` (unicode), `s` (dotAll).
-  - Clases de caracteres y corchetes: `[abc]`, `[^abc]`, `[0-9]`, `[a-z]`.
-  - Metacaracteres: `.`, `\d`, `\D`, `\w`, `\W`, `\s`, `\S`, `\b`, `\B`.
-  - Cuantificadores: `+`, `*`, `?`, `{n}`, `{n,m}`, `{n,}`, `^`, `$`.
-  - Métodos de RegExp y String: `test()`, `exec()`, `match()`, `matchAll()`, `search()`.
+- **Teoría del Módulo**: [Modulo 4 - String y RegExp.md](./Modulo%204%20-%20String%20y%20RegExp/Modulo%204%20-%20String%20y%20RegExp.md)
+- **1. Propiedades y Métodos de String**: [01_metodos_string.js](./Modulo%204%20-%20String%20y%20RegExp/01_metodos_string.js)
+  - `.length`, acceso por índice, búsqueda (`includes`, `indexOf`, `endsWith`), extracción (`slice`, `trim`) y división (`split`).
+- **2. Template Literals (ES6)**: [02_template_literals.js](./Modulo%204%20-%20String%20y%20RegExp/02_template_literals.js)
+  - Interpolación `${expresion}` y cadenas multilínea con backticks.
+- **3. Expresiones Regulares (RegExp)**: [03_expresiones_regulares.js](./Modulo%204%20-%20String%20y%20RegExp/03_expresiones_regulares.js)
+  - Validación con `.test()`, extracción con `.match()` y sustitución con `.replace()`.
 
 ---
 
