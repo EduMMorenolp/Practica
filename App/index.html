@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Hub | Runner Dinámico</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- SIDEBAR (Rectángulo rojo en el dibujo) -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand">
+        <span class="brand-icon">⚡</span>
+        <span>Practice Hub</span>
+      </div>
+
+      <!-- Selector de tecnología actual / futuro (rectángulo amarillo en wireframe) -->
+      <div class="tech-selector-box">
+        <div class="tech-label">Tecnología</div>
+        <div id="categories-container">
+          <!-- Renderizado dinámico de carpetas raíz (JavaScript, etc.) -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación de módulos dentro de la tecnología seleccionada -->
+    <nav class="sidebar-nav">
+      <div class="tech-label" style="padding: 0 4px 8px;">Módulos</div>
+      <div id="modules-nav-list">
+        <!-- Lista de módulos dinámicos -->
+      </div>
+    </nav>
+
+    <!-- Barra de progreso general -->
+    <div class="sidebar-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+        <span style="color: var(--text-muted);">Progreso Módulos</span>
+        <span id="progress-text" style="font-weight: 600;">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+    
+    <!-- BANNER SUPERIOR (Rectángulo amarillo superior en wireframe) -->
+    <header class="module-header-banner">
+      <div class="banner-left">
+        <span class="banner-tag" id="current-category-tag">Práctica</span>
+        <h1 class="module-title" id="page-title">Cargando contenido...</h1>
+        <p class="module-desc" id="page-desc">Ejecuta los archivos modificados a mano y valida tus soluciones en tiempo real con Node.js.</p>
+      </div>
+      <div class="banner-actions">
+        <button class="btn btn-secondary" onclick="loadStructure()">🔄 Recargar Archivos</button>
+      </div>
+    </header>
+
+    <!-- LISTADO DE MÓDULOS CON SUS EJERCICIOS (Cajas amarillas en wireframe) -->
+    <section class="content-body" id="modules-container">
+      <!-- Se llenará dinámicamente con las carpetas y archivos reales -->
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
