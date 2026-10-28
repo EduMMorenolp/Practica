@@ -34,9 +34,9 @@ d:/Proyectos/Practice/
 ## 📐 Convenciones y Pautas de Trabajo
 
 1. **Nomenclatura de Carpetas y Archivos**:
-   - Cada unidad se organiza dentro de `JavaScript/Modulo X/`.
-   - El documento teórico principal de cada carpeta **debe llamarse `Modulo.md`**.
-   - Los ejercicios son archivos de código separados (ej. `01_tema.js`, `02_tema.js` o `.html` cuando aplique DOM), con consignas claras en comentarios `// TODO:` para que el usuario escriba la solución a mano.
+   - Cada unidad se organiza dentro de `JavaScript/Modulo X - Nombre Descriptivo/`.
+   - El documento teórico principal de cada carpeta lleva el **mismo nombre del módulo**: `Modulo X - Nombre Descriptivo.md`.
+   - Los ejercicios son archivos de código separados (ej. `01_tema.js`, `02_tema.js`), con consignas claras en comentarios `// TODO:` para que el usuario escriba la solución a mano.
 
 2. **Estilo Pedagógico**:
    - Explicaciones claras, ejemplos mínimos ejecutables y sin sobrecarga innecesaria.
