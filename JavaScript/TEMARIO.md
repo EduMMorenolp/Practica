@@ -48,23 +48,17 @@
 ## Módulo 2: Control de Flujo y Estructuras Condicionales
 *Ruta: [`Modulo 2/`](./Modulo%202/)*
 
-- **2.1 Estructuras Condicionales If / Else**
-  - `if`, `else if`, `else`.
-  - Condiciones anidadas y buenas prácticas (*early return*).
-- **2.2 Operador Ternario**
-  - Sintaxis: `condicion ? exp1 : exp2`.
-  - Ternarios anidados y cuándo evitarlos por legibilidad.
-- **2.3 Estructura Switch / Case**
-  - `switch (expresion)`, cláusulas `case`, obligatoriedad de `break` y cláusula `default`.
-  - Agrupación de múltiples casos (*fall-through* controlado).
-- **2.4 Bucles Básicos: While y Do...While**
-  - Bucle `while (condicion)`.
-  - Bucle `do { ... } while (condicion)`.
-  - Prevención de bucles infinitos.
-- **2.5 Bucle For Clásico y Control de Flujo**
-  - `for (inicialización; condición; incremento)`.
-  - Sentencias de control: `break` (interrupción inmediata) y `continue` (salto de iteración).
-  - Bucles anidados y etiquetas (*labels*).
+- **Teoría del Módulo**: [Modulo.md](./Modulo%202/Modulo.md)
+- **1. Condicionales If / Else**: [01_condicionales_if_else.js](./Modulo%202/01_condicionales_if_else.js)
+  - `if`, `else if`, `else`, condiciones compuestas y buenas prácticas.
+- **2. Operador Ternario**: [02_operador_ternario.js](./Modulo%202/02_operador_ternario.js)
+  - Sintaxis: `condicion ? exp1 : exp2`, salidas directas y formateo condicional.
+- **3. Estructura Switch / Case**: [03_switch_case.js](./Modulo%202/03_switch_case.js)
+  - Casos específicos, obligatoriedad de `break`, cláusula `default` y agrupación intencional.
+- **4. Bucles While y Do...While**: [04_bucles_while_dowhile.js](./Modulo%202/04_bucles_while_dowhile.js)
+  - Condición previa (`while`), garantía de ejecución mínima (`do...while`).
+- **5. Bucle For Clásico y Control de Flujo**: [05_bucle_for_break_continue.js](./Modulo%202/05_bucle_for_break_continue.js)
+  - `for (inicialización; condición; incremento)`, `continue` (salto de iteración) y `break` (interrupción).
 
 ---
 
