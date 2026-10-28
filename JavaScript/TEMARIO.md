@@ -1,6 +1,6 @@
 # 📚 Roadmap Integral y Exhaustivo de JavaScript (W3Schools & OverAPI)
 
-> Temario completo y enciclopédico de JavaScript: desde la sintaxis básica, objetos nativos globales (`Array`, `String`, `Math`, `Date`, `RegExp`), APIs del navegador (`Window`, `DOM`, `Events`, `Storage`, `Canvas`), JavaScript Moderno (ES6-ESNext) hasta asincronismo y APIs avanzadas.
+> Temario completo y enciclopédico de JavaScript: desde la sintaxis básica, objetos nativos globales (`Array`, `String`, `Math`, `Date`, `RegExp`), APIs del navegador (`Window`, `DOM`, `Events`, `Storage`, `Canvas`), JavaScript Moderno (ES6-ESNext) hasta asincronismo y proyectos integradores.
 
 ---
 
@@ -91,230 +91,135 @@
 ---
 
 ## Módulo 5: Números, Matemáticas y Fechas (Number, Math & Date)
+*Ruta: [`Modulo 5 - Numeros Matematicas y Fechas/`](./Modulo%205%20-%20Numeros%20Matematicas%20y%20Fechas/)*
 
-- **5.1 Objeto Number y Métodos Globales**
-  - Constantes de Number: `MAX_VALUE`, `MIN_VALUE`, `POSITIVE_INFINITY`, `NEGATIVE_INFINITY`, `NaN`, `EPSILON`.
-  - Métodos de instancia: `toFixed()`, `toPrecision()`, `toExponential()`, `toString(radix)`.
-  - Métodos estáticos: `Number.isInteger()`, `Number.isNaN()`, `Number.isFinite()`.
-  - Funciones globales: `parseInt()`, `parseFloat()`, `isNaN()`, `isFinite()`.
-- **5.2 Objeto Math (Funciones Matemáticas)**
-  - Constantes: `Math.PI`, `Math.E`, `Math.SQRT2`, `Math.LN10`.
-  - Redondeo: `Math.round()`, `Math.floor()`, `Math.ceil()`, `Math.trunc()`.
-  - Utilidades: `Math.abs()`, `Math.min()`, `Math.max()`, `Math.pow()`, `Math.sqrt()`.
-  - Aleatorios: `Math.random()` y generación de rangos enteros `[min, max]`.
-  - Trigonometría y logaritmos: `sin()`, `cos()`, `tan()`, `log()`, `exp()`.
-- **5.3 Objeto Date (Manejo de Fechas y Tiempos)**
-  - Instanciación: `new Date()`, `Date.now()`, `Date.parse()`, `Date.UTC()`.
-  - Getters: `getFullYear()`, `getMonth()` (0-11), `getDate()`, `getDay()` (0-6), `getHours()`, `getMinutes()`, `getSeconds()`, `getTime()`.
-  - Setters: `setFullYear()`, `setMonth()`, `setDate()`, etc.
-  - Equivalentes UTC: `getUTCFullYear()`, `getUTCHours()`, etc.
-  - Formateo: `toISOString()`, `toDateString()`, `toLocaleDateString()`, `toLocaleTimeString()`, `toLocaleString()`.
+- **Teoría del Módulo**: [Modulo 5 - Numeros Matematicas y Fechas.md](./Modulo%205%20-%20Numeros%20Matematicas%20y%20Fechas/Modulo%205%20-%20Numeros%20Matematicas%20y%20Fechas.md)
+- **1. Objeto Number y Métodos**: [01_metodos_number.js](./Modulo%205%20-%20Numeros%20Matematicas%20y%20Fechas/01_metodos_number.js)
+  - Formateo con `.toFixed(2)` y `.toPrecision()`, conversiones con `parseInt()` / `parseFloat()`, validación con `Number.isInteger()`.
+- **2. Objeto Math**: [02_objeto_math.js](./Modulo%205%20-%20Numeros%20Matematicas%20y%20Fechas/02_objeto_math.js)
+  - Redondeos (`round`, `floor`, `ceil`, `trunc`), extremos (`min`, `max`), potencias y aleatorios en rangos `[min, max]`.
+- **3. Objeto Date**: [03_objeto_date.js](./Modulo%205%20-%20Numeros%20Matematicas%20y%20Fechas/03_objeto_date.js)
+  - Getters de tiempo, cálculo de diferencias en días con timestamps y formateo localizado con `toLocaleDateString`.
 
 ---
 
 ## Módulo 6: Arrays y Colecciones Iterables (Array, Set & Map)
+*Ruta: [`Modulo 6 - Arrays y Colecciones Iterables/`](./Modulo%206%20-%20Arrays%20y%20Colecciones%20Iterables/)*
 
-- **6.1 Propiedades y Métodos Mutables de Array**
-  - Propiedad `.length` y mutación directa.
-  - Añadir y quitar elementos: `push()`, `pop()`, `shift()`, `unshift()`.
-  - Reordenar e inversión: `reverse()`, `sort()` (con función comparadora `(a, b) => a - b`).
-  - Eliminación e inserción combinada: `splice(inicio, conteo, ...elementos)`.
-- **6.2 Métodos Inmutables y de Transformación**
-  - Extracción y unión: `slice()`, `concat()`, `join()`.
-  - Búsqueda: `indexOf()`, `lastIndexOf()`, `includes()`.
-  - Conversión: `Array.from()`, `Array.isArray()`, `Array.of()`.
-- **6.3 Métodos de Iteración de Orden Superior (Higher-Order Functions)**
-  - `forEach(callback)`: Recorrido sin retorno.
-  - `map(callback)`: Transformación y mapeo de arrays.
-  - `filter(callback)`: Filtrado por predicado booleano.
-  - `reduce(callback, inicial)` y `reduceRight()`: Reducción y acumuladores.
-  - Búsqueda avanzada: `find()`, `findIndex()`, `findLast()`, `findLastIndex()`.
-  - Validación y prueba: `some()`, `every()`.
-  - Aplanado de matrices: `flat()`, `flatMap()`.
-- **6.4 Desestructuración y Operador Spread en Arrays**
-  - Desestructuración: `const [a, b, ...resto] = lista`.
-  - Clonado y unión con spread: `const copia = [...original]`.
-- **6.5 Nuevas Colecciones: Map, Set, WeakMap y WeakSet (ES6)**
-  - `Set`: Colección de valores únicos (`add`, `has`, `delete`, `clear`, `size`).
-  - `Map`: Colección de pares clave-valor de cualquier tipo (`set`, `get`, `has`, `delete`, `size`).
-  - Bucle `for...of` y destructuración de iterables.
+- **Teoría del Módulo**: [Modulo 6 - Arrays y Colecciones Iterables.md](./Modulo%206%20-%20Arrays%20y%20Colecciones%20Iterables/Modulo%206%20-%20Arrays%20y%20Colecciones%20Iterables.md)
+- **1. Métodos Mutables**: [01_metodos_mutables.js](./Modulo%206%20-%20Arrays%20y%20Colecciones%20Iterables/01_metodos_mutables.js)
+  - Inserción y extracción (`push`, `pop`, `shift`, `unshift`), ordenamiento numérico `.sort((a,b) => a-b)` y `.splice()`.
+- **2. Métodos Inmutables**: [02_metodos_inmutables.js](./Modulo%206%20-%20Arrays%20y%20Colecciones%20Iterables/02_metodos_inmutables.js)
+  - Extracción con `.slice()`, unión con spread `[...]`, `.join()` y búsqueda con `.includes()`.
+- **3. Orden Superior (Higher Order)**: [03_orden_superior.js](./Modulo%206%20-%20Arrays%20y%20Colecciones%20Iterables/03_orden_superior.js)
+  - Transformación con `.map()`, filtrado con `.filter()`, acumuladores con `.reduce()` y búsqueda con `.find()`.
+- **4. Colecciones Set y Map**: [04_set_y_map.js](./Modulo%206%20-%20Arrays%20y%20Colecciones%20Iterables/04_set_y_map.js)
+  - Eliminación instantánea de duplicados con `Set` y diccionarios clave-valor arbitrarios con `Map`.
 
 ---
 
 ## Módulo 7: Objetos, Prototipos y Clases (Object & OOP)
+*Ruta: [`Modulo 7 - Objetos Prototipos y Clases/`](./Modulo%207%20-%20Objetos%20Prototipos%20y%20Clases/)*
 
-- **7.1 Objetos Literales**
-  - Creación, propiedades dinámicas (`obj[clave]`), notación abreviada (shorthand properties).
-  - Métodos dentro de objetos y palabra reservada `this`.
-  - Operador `delete` y operador `in`.
-- **7.2 Métodos Estáticos de Object**
-  - Inspección: `Object.keys()`, `Object.values()`, `Object.entries()`, `Object.fromEntries()`.
-  - Copia y asignación: `Object.assign()`, spread operator `{ ...obj }`.
-  - Inmutabilidad: `Object.freeze()`, `Object.seal()`, `Object.isFrozen()`.
-  - Propiedades avanzadas: `Object.defineProperty()`, `getters` y `setters`.
-- **7.3 Herencia Prototípica**
-  - El prototipo (`__proto__`, `prototype`).
-  - `Object.create()`, `Object.getPrototypeOf()`, `Object.setPrototypeOf()`.
-  - Funciones constructoras y operador `new`.
-- **7.4 Clases en JavaScript (ES6 OOP)**
-  - Declaración `class`, método `constructor`.
-  - Métodos de instancia vs métodos estáticos (`static`).
-  - Propiedades y métodos privados (`#propiedadPrivada`).
-  - Herencia con `extends` y llamada a la clase padre con `super()`.
+- **Teoría del Módulo**: [Modulo 7 - Objetos Prototipos y Clases.md](./Modulo%207%20-%20Objetos%20Prototipos%20y%20Clases/Modulo%207%20-%20Objetos%20Prototipos%20y%20Clases.md)
+- **1. Objetos Literales**: [01_objetos_literales.js](./Modulo%207%20-%20Objetos%20Prototipos%20y%20Clases/01_objetos_literales.js)
+  - Acceso por corchetes dinámicos, métodos con `this` y desestructuración.
+- **2. Métodos de Object**: [02_metodos_object.js](./Modulo%207%20-%20Objetos%20Prototipos%20y%20Clases/02_metodos_object.js)
+  - Inspección con `Object.keys()`, `values()`, `entries()` e inmutabilidad con `Object.freeze()`.
+- **3. Clases y Herencia (ES6 OOP)**: [03_clases_y_herencia.js](./Modulo%207%20-%20Objetos%20Prototipos%20y%20Clases/03_clases_y_herencia.js)
+  - Campos privados con `#`, constructores y herencia con `extends` y `super()`.
 
 ---
 
 ## Módulo 8: El Objeto Global del Navegador (BOM - Browser Object Model)
+*Ruta: [`Modulo 8 - BOM Browser Object Model/`](./Modulo%208%20-%20BOM%20Browser%20Object%20Model/)*
 
-- **8.1 El Objeto Window**
-  - Propiedades del viewport: `innerHeight`, `innerWidth`, `outerHeight`, `outerWidth`.
-  - Desplazamiento: `pageXOffset`, `pageYOffset` (`scrollX`, `scrollY`), `scrollTo()`, `scrollBy()`.
-  - Diálogos del navegador: `alert()`, `confirm()`, `prompt()`.
-  - Manipulación de ventanas: `open()`, `close()`, `print()`, `focus()`, `blur()`.
-- **8.2 Navigator**
-  - Propiedades: `userAgent`, `language`, `onLine`, `cookieEnabled`, `platform`.
-  - Geolocalización básica y permisos (`navigator.geolocation`).
-- **8.3 Screen**
-  - Dimensiones de la pantalla del usuario: `width`, `height`, `availWidth`, `availHeight`, `colorDepth`.
-- **8.4 Location**
-  - Desglose de URL: `href`, `protocol`, `host`, `hostname`, `port`, `pathname`, `search`, `hash`.
-  - Navegación programática: `assign()`, `replace()`, `reload()`.
-- **8.5 History**
-  - Navegación en el historial: `back()`, `forward()`, `go()`.
-  - History API moderna: `pushState()`, `replaceState()`, evento `popstate`.
+- **Teoría del Módulo**: [Modulo 8 - BOM Browser Object Model.md](./Modulo%208%20-%20BOM%20Browser%20Object%20Model/Modulo%208%20-%20BOM%20Browser%20Object%20Model.md)
+- **1. Objeto Window y GlobalThis**: [01_objeto_window.js](./Modulo%208%20-%20BOM%20Browser%20Object%20Model/01_objeto_window.js)
+  - Viewport, métodos globales y `globalThis`.
+- **2. Location y Parseo de URLs**: [02_location_y_history.js](./Modulo%208%20-%20BOM%20Browser%20Object%20Model/02_location_y_history.js)
+  - Descomposición de URLs y query params con `URLSearchParams`.
+- **3. Navigator y Entorno**: [03_navigator_y_screen.js](./Modulo%208%20-%20BOM%20Browser%20Object%20Model/03_navigator_y_screen.js)
+  - Detección de idioma, conectividad online y dispositivo.
 
 ---
 
 ## Módulo 9: Manipulación del DOM (Document Object Model)
+*Ruta: [`Modulo 9 - Manipulacion del DOM/`](./Modulo%209%20-%20Manipulacion%20del%20DOM/)*
 
-- **9.1 Selección y Consulta de Nodos**
-  - Métodos clásicos: `getElementById()`, `getElementsByTagName()`, `getElementsByClassName()`, `getElementsByName()`.
-  - Métodos modernos con selectores CSS: `querySelector()`, `querySelectorAll()`.
-  - `NodeList` vs `HTMLCollection` (vivas vs estáticas).
-- **9.2 Árbol de Nodos y Navegación**
-  - Propiedades de jerarquía: `parentNode`, `parentElement`, `childNodes`, `children`, `firstChild`, `firstElementChild`, `lastChild`, `lastElementChild`, `nextSibling`, `nextElementSibling`, `previousSibling`, `previousElementSibling`.
-  - Propiedades de nodo: `nodeType`, `nodeName`, `nodeValue`.
-- **9.3 Creación, Inserción y Eliminación de Elementos**
-  - Creación: `document.createElement()`, `document.createTextNode()`, `document.createDocumentFragment()`.
-  - Inserción clásica: `appendChild()`, `insertBefore()`, `removeChild()`, `replaceChild()`.
-  - Inserción moderna: `append()`, `prepend()`, `before()`, `after()`, `replaceWith()`, `remove()`.
-  - Inserción adyacente: `insertAdjacentHTML()`, `insertAdjacentElement()`.
-  - Clonado de nodos: `cloneNode(true/false)`.
-- **9.4 Modificación de Contenido y Atributos**
-  - Contenido: `textContent`, `innerText`, `innerHTML`, `outerHTML`.
-  - Atributos: `getAttribute()`, `setAttribute()`, `hasAttribute()`, `removeAttribute()`.
-  - Atributos directos: `id`, `className`, `src`, `href`, `value`, `disabled`.
-  - Dataset personalizado: `element.dataset.prop`.
-- **9.5 Manipulación de Estilos y Clases**
-  - Estilos en línea: `element.style.propiedad`.
-  - El objeto `classList`: `add()`, `remove()`, `toggle()`, `contains()`, `replace()`.
-  - Cálculo de estilos: `window.getComputedStyle(element)`.
+- **Teoría del Módulo**: [Modulo 9 - Manipulacion del DOM.md](./Modulo%209%20-%20Manipulacion%20del%20DOM/Modulo%209%20-%20Manipulacion%20del%20DOM.md)
+- **1. Selectores del DOM**: [01_selectores_dom.js](./Modulo%209%20-%20Manipulacion%20del%20DOM/01_selectores_dom.js)
+  - `querySelector`, `querySelectorAll` y búsqueda por jerarquía.
+- **2. Contenido y Atributos**: [02_modificacion_contenido_y_atributos.js](./Modulo%209%20-%20Manipulacion%20del%20DOM/02_modificacion_contenido_y_atributos.js)
+  - `textContent`, `innerHTML`, `setAttribute` y propiedades de formulario.
+- **3. Clases y Estilos**: [03_clases_y_estilos.js](./Modulo%209%20-%20Manipulacion%20del%20DOM/03_clases_y_estilos.js)
+  - El objeto `classList` (`add`, `remove`, `toggle`, `contains`).
+- **4. Creación e Inserción**: [04_creacion_e_insercion_nodos.js](./Modulo%209%20-%20Manipulacion%20del%20DOM/04_creacion_e_insercion_nodos.js)
+  - `createElement` y ensamblado con `append()`.
 
 ---
 
 ## Módulo 10: Eventos del DOM y Manejo de Interacción
+*Ruta: [`Modulo 10 - Eventos del DOM y Manejo de Interaccion/`](./Modulo%2010%20-%20Eventos%20del%20DOM%20y%20Manejo%20de%20Interaccion/)*
 
-- **10.1 Registro y Gestión de Eventos**
-  - `addEventListener(tipo, handler, opciones)`.
-  - `removeEventListener(tipo, handler)`.
-  - Opciones de listener: `capture`, `once`, `passive`.
-- **10.2 El Objeto Event (Event Interface)**
-  - Propiedades clave: `e.target` vs `e.currentTarget`, `e.type`, `e.timeStamp`.
-  - Métodos de control: `e.preventDefault()`, `e.stopPropagation()`, `e.stopImmediatePropagation()`.
-  - Ciclo de eventos: Capturing Phase (captura), Target Phase, Bubbling Phase (burbujeo).
-  - Patrón de **Delegación de Eventos** (*Event Delegation*).
-- **10.3 Eventos de Ratón y Puntero (Mouse & Pointer Events)**
-  - `click`, `dblclick`, `mousedown`, `mouseup`, `mousemove`, `mouseover`, `mouseout`, `mouseenter`, `mouseleave`.
-  - Coordenadas: `clientX/Y`, `pageX/Y`, `screenX/Y`, `offsetX/Y`.
-  - Teclas modificadoras: `altKey`, `ctrlKey`, `shiftKey`, `metaKey`.
-- **10.4 Eventos de Teclado (Keyboard Events)**
-  - `keydown`, `keyup`, `keypress`.
-  - Propiedades: `e.key`, `e.code`, control de combinaciones de teclas.
-- **10.5 Eventos de Formulario**
-  - `submit`, `input`, `change`, `focus`, `blur`, `reset`, `select`.
-  - Validación de formularios con JS.
-- **10.6 Eventos de Ventana y Documento**
-  - Ciclo de carga: `DOMContentLoaded`, `load`, `beforeunload`, `unload`.
-  - Interacción: `resize`, `scroll`.
-- **10.7 Eventos Personalizados (Custom Events)**
-  - `new CustomEvent('miEvento', { detail: { ... } })` y `dispatchEvent()`.
+- **Teoría del Módulo**: [Modulo 10 - Eventos del DOM y Manejo de Interaccion.md](./Modulo%2010%20-%20Eventos%20del%20DOM%20y%20Manejo%20de%20Interaccion/Modulo%2010%20-%20Eventos%20del%20DOM%20y%20Manejo%20de%20Interaccion.md)
+- **1. Event Listeners**: [01_event_listeners.js](./Modulo%2010%20-%20Eventos%20del%20DOM%20y%20Manejo%20de%20Interaccion/01_event_listeners.js)
+  - Registro de escuchadores y control de ejecuciones únicas (`once`).
+- **2. Objeto Event y Delegación**: [02_objeto_event_y_delegacion.js](./Modulo%2010%20-%20Eventos%20del%20DOM%20y%20Manejo%20de%20Interaccion/02_objeto_event_y_delegacion.js)
+  - `preventDefault()`, `stopPropagation()` y patrón de delegación.
+- **3. Teclado y Formularios**: [03_eventos_teclado_y_formulario.js](./Modulo%2010%20-%20Eventos%20del%20DOM%20y%20Manejo%20de%20Interaccion/03_eventos_teclado_y_formulario.js)
+  - Atajos de teclado con `e.key` y validación en `submit`.
 
 ---
 
 ## Módulo 11: Asincronismo, Timers y Fetch API
+*Ruta: [`Modulo 11 - Asincronismo Timers y Fetch API/`](./Modulo%2011%20-%20Asincronismo%20Timers%20y%20Fetch%20API/)*
 
-- **11.1 Fundamentos de Asincronismo y el Event Loop**
-  - Pila de llamadas (*Call Stack*), Cola de Tareas (*Task/Callback Queue*) y Microtareas (*Microtask Queue*).
-  - Temporizadores: `setTimeout()`, `clearTimeout()`, `setInterval()`, `clearInterval()`.
-  - `requestAnimationFrame()` para animaciones suaves.
-- **11.2 Callbacks y Callback Hell**
-  - Patrones de callbacks y pirámide de la perdición.
-- **11.3 Promesas (Promise Interface)**
-  - Estados: *pending*, *fulfilled*, *rejected*.
-  - Consumo: `.then()`, `.catch()`, `.finally()`.
-  - Combinadores estáticos: `Promise.all()`, `Promise.allSettled()`, `Promise.race()`, `Promise.any()`, `Promise.resolve()`, `Promise.reject()`.
-- **11.4 Async / Await**
-  - Sintaxis de funciones asíncronas con `async` y `await`.
-  - Manejo de excepciones con bloques `try...catch...finally`.
-  - Ejecución concurrente vs secuencial con `await`.
-- **11.5 Consumo de Datos con Fetch API**
-  - Peticiones HTTP básicas: GET, POST, PUT, DELETE, PATCH.
-  - Configuración de cabeceras (`headers: { 'Content-Type': 'application/json' }`).
-  - Manejo del objeto `Response`: `.json()`, `.text()`, `.blob()`, `response.ok`, `response.status`.
-  - Cancelación de peticiones con `AbortController`.
+- **Teoría del Módulo**: [Modulo 11 - Asincronismo Timers y Fetch API.md](./Modulo%2011%20-%20Asincronismo%20Timers%20y%20Fetch%20API/Modulo%2011%20-%20Asincronismo%20Timers%20y%20Fetch%20API.md)
+- **1. Timers y Event Loop**: [01_timers_y_event_loop.js](./Modulo%2011%20-%20Asincronismo%20Timers%20y%20Fetch%20API/01_timers_y_event_loop.js)
+  - Call stack y orden de colas de micro/macrotareas.
+- **2. Promesas**: [02_promesas.js](./Modulo%2011%20-%20Asincronismo%20Timers%20y%20Fetch%20API/02_promesas.js)
+  - `new Promise`, `.then()`, `.catch()` y combinador `Promise.all()`.
+- **3. Async / Await y Fetch**: [03_async_await_y_fetch.js](./Modulo%2011%20-%20Asincronismo%20Timers%20y%20Fetch%20API/03_async_await_y_fetch.js)
+  - Funciones `async`, manejo con `try/catch/finally` y consumo de JSON.
 
 ---
 
 ## Módulo 12: Gráficos con HTML5 Canvas API
+*Ruta: [`Modulo 12 - Graficos con HTML5 Canvas API/`](./Modulo%2012%20-%20Graficos%20con%20HTML5%20Canvas%20API/)*
 
-- **12.1 Introducción al Elemento Canvas y Contexto 2D**
-  - Elemento `<canvas width="800" height="600">`.
-  - Obtención de contexto: `const ctx = canvas.getContext('2d')`.
-- **12.2 Dibujo de Formas Básicas y Trazos (Paths)**
-  - Rectángulos: `fillRect()`, `strokeRect()`, `clearRect()`.
-  - Rutas: `beginPath()`, `closePath()`, `moveTo(x, y)`, `lineTo(x, y)`, `stroke()`, `fill()`.
-  - Arcos y círculos: `arc(x, y, radio, startAngle, endAngle, anticlockwise)`.
-  - Curvas de Bézier: `quadraticCurveTo()`, `bezierCurveTo()`.
-- **12.3 Estilos, Colores y Gradientes**
-  - Colores: `fillStyle`, `strokeStyle`.
-  - Estilos de línea: `lineWidth`, `lineCap`, `lineJoin`, `setLineDash()`.
-  - Gradientes: `createLinearGradient()`, `createRadialGradient()`, `addColorStop()`.
-  - Sombras: `shadowColor`, `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`.
-- **12.4 Texto e Imágenes en Canvas**
-  - Texto: `font`, `textAlign`, `textBaseline`, `fillText()`, `strokeText()`, `measureText()`.
-  - Dibujo de imágenes: `drawImage(img, dx, dy)`, recorte y escalado.
-- **12.5 Transformaciones y Manipulación de Píxeles**
-  - Transformaciones: `translate()`, `rotate()`, `scale()`, `save()`, `restore()`.
-  - Píxeles: `createImageData()`, `getImageData()`, `putImageData()`.
+- **Teoría del Módulo**: [Modulo 12 - Graficos con HTML5 Canvas API.md](./Modulo%2012%20-%20Graficos%20con%20HTML5%20Canvas%20API/Modulo%2012%20-%20Graficos%20con%20HTML5%20Canvas%20API.md)
+- **1. Coordenadas y Rectángulos**: [01_contexto_y_rectangulos.js](./Modulo%2012%20-%20Graficos%20con%20HTML5%20Canvas%20API/01_contexto_y_rectangulos.js)
+  - `fillRect`, `clearRect` y modelo de píxeles 2D.
+- **2. Paths y Arcos**: [02_paths_y_arcos.js](./Modulo%2012%20-%20Graficos%20con%20HTML5%20Canvas%20API/02_paths_y_arcos.js)
+  - Trazos personalizados con `beginPath()`, `lineTo()` y arcos en radianes con `arc()`.
+- **3. Estilos y Gradientes**: [03_estilos_y_gradientes.js](./Modulo%2012%20-%20Graficos%20con%20HTML5%20Canvas%20API/03_estilos_y_gradientes.js)
+  - Colores de relleno, anchos de pincel y gradientes.
 
 ---
 
 ## Módulo 13: Almacenamiento Web y APIs Modernas del Navegador
+*Ruta: [`Modulo 13 - Almacenamiento Web y APIs Modernas del Navegador/`](./Modulo%2013%20-%20Almacenamiento%20Web%20y%20APIs%20Modernas%20del%20Navegador/)*
 
-- **13.1 Web Storage API**
-  - `localStorage` (persistencia a largo plazo).
-  - `sessionStorage` (persistencia por pestaña).
-  - Métodos: `setItem(key, value)`, `getItem(key)`, `removeItem(key)`, `clear()`, `key(index)`, `length`.
-  - Serialización con `JSON.stringify()` y `JSON.parse()`.
-  - Evento `storage` entre pestañas.
-- **13.2 Cookies en JavaScript**
-  - Lectura y escritura con `document.cookie`.
-  - Parámetros: `expires`, `max-age`, `path`, `SameSite`, `Secure`.
-- **13.3 IndexedDB (Persistencia Estructurada)**
-  - Concepto de base de datos local NoSQL para grandes volúmenes de datos.
-- **13.4 Otras Web APIs Clave**
-  - Clipboard API (`navigator.clipboard.writeText`).
-  - Intersection Observer API (detección de elementos en viewport y lazy loading).
-  - Audio API (`new Audio()`, síntesis de voz con `speechSynthesis`).
+- **Teoría del Módulo**: [Modulo 13 - Almacenamiento Web y APIs Modernas del Navegador.md](./Modulo%2013%20-%20Almacenamiento%20Web%20y%20APIs%20Modernas%20del%20Navegador/Modulo%2013%20-%20Almacenamiento%20Web%20y%20APIs%20Modernas%20del%20Navegador.md)
+- **1. LocalStorage y SessionStorage**: [01_localstorage_y_sessionstorage.js](./Modulo%2013%20-%20Almacenamiento%20Web%20y%20APIs%20Modernas%20del%20Navegador/01_localstorage_y_sessionstorage.js)
+  - Persistencia síncrona y serialización de objetos con `JSON.stringify()` / `JSON.parse()`.
+- **2. Cookies**: [02_cookies.js](./Modulo%2013%20-%20Almacenamiento%20Web%20y%20APIs%20Modernas%20del%20Navegador/02_cookies.js)
+  - Parámetros de seguridad (`max-age`, `SameSite`, `Secure`).
+- **3. Web APIs Modernas**: [03_apis_modernas.js](./Modulo%2013%20-%20Almacenamiento%20Web%20y%20APIs%20Modernas%20del%20Navegador/03_apis_modernas.js)
+  - Portapapeles (Clipboard API) y observadores.
 
 ---
 
 ## Módulo 14: Proyectos Prácticos Integradores de Código a Mano
+*Ruta: [`Modulo 14 - Proyectos Practicos Integradores/`](./Modulo%2014%20-%20Proyectos%20Practicos%20Integradores/)*
 
-Proyectos progresivos para ensamblar todas las piezas:
-
-1. **Calculadora Interactiva Completa**: Control de flujo, funciones, Math y eventos.
-2. **Tablero Kanban / To-Do App con LocalStorage**: Arrays de objetos, orden superior, renderizado dinámico del DOM y persistencia.
-3. **Reproductor de Música / Dashboard del Clima (Weather App)**: Async/await, Fetch API a una API pública, manejo de errores y estados de carga.
-4. **Mini Juego en 2D con Canvas (Pong / Snake)**: Bucles de juego con `requestAnimationFrame`, manejo de colisiones, teclado y renderizado gráfico continuo.
-5. **Generador y Validador de Formularios con Expresiones Regulares**: Strings, RegExp, eventos de validación en tiempo real y accesibilidad.
+- **Teoría del Módulo**: [Modulo 14 - Proyectos Practicos Integradores.md](./Modulo%2014%20-%20Proyectos%20Practicos%20Integradores/Modulo%2014%20-%20Proyectos%20Practicos%20Integradores.md)
+- **1. Calculadora Interactiva**: [01_proyecto_calculadora.js](./Modulo%2014%20-%20Proyectos%20Practicos%20Integradores/01_proyecto_calculadora.js)
+  - Motor de cálculo, validación defensiva y registro de historial.
+- **2. Gestor Kanban / To-Do**: [02_proyecto_kanban_todo.js](./Modulo%2014%20-%20Proyectos%20Practicos%20Integradores/02_proyecto_kanban_todo.js)
+  - Ciclo de estados de tareas, filtros y serialización JSON.
+- **3. Dashboard Meteorológico Asíncrono**: [03_proyecto_dashboard_clima_fetch.js](./Modulo%2014%20-%20Proyectos%20Practicos%20Integradores/03_proyecto_dashboard_clima_fetch.js)
+  - Async/await, simulación de respuestas de red y control de errores.
+- **4. Validador de Formularios con Regex**: [04_proyecto_validador_regex.js](./Modulo%2014%20-%20Proyectos%20Practicos%20Integradores/04_proyecto_validador_regex.js)
+  - Validación exhaustiva con expresiones regulares de contraseñas, emails y teléfonos.
