@@ -21,12 +21,18 @@
 *Ruta: [`JavaScript/Modulo 1/`](file:///d:/Proyectos/Practice/JavaScript/Modulo%201)*
 
 - **Teoría del Módulo**: [Modulo.md](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/Modulo.md)
-- **1.1. Introducción y Salida**: [01_salidas_y_variables.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/01_salidas_y_variables.js)
-  - `console.log()`, variables con `let` vs `const`, alcance de bloque (*block scope*).
-- **1.2. Tipos de Datos Primitivos**: [02_tipos_de_datos.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/02_tipos_de_datos.js)
-  - `typeof`, conversiones `Number()`, `String()`, `Boolean()`, curiosidad de `null`, *truthy* & *falsy*.
-- **1.3. Operadores**: [03_operadores.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/03_operadores.js)
-  - Módulo (`%`), igualdad estricta (`===`), operadores lógicos (`&&`, `||`), operador nullish (`??`).
+- **1. Salidas y Ejecución**: [01_salidas.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/01_salidas.js)
+  - `console.log()`, argumentos múltiples, `info`, `warn`, `error`.
+- **2. Variables y Constantes**: [02_variables_y_constantes.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/02_variables_y_constantes.js)
+  - `const` vs `let`, inmutabilidad, reasignación, alcance de bloque (*block scope*).
+- **3. Tipos de Datos Primitivos**: [03_tipos_de_datos.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/03_tipos_de_datos.js)
+  - `typeof`, particularidad de `null`, casting explícito (`Number()`), valores *truthy* y *falsy*.
+- **4. Operadores**: [04_operadores.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/04_operadores.js)
+  - **4.1** Aritméticos (`+`, `-`, `*`, `/`, `%`, `**`).
+  - **4.2** Asignación (`+=`, `-=`, etc.).
+  - **4.3** Comparación estricta (`===`) vs débil (`==`).
+  - **4.4** Lógicos (`&&`, `||`, `!`).
+  - **4.5** Nullish Coalescing (`??`).
 
 ---
 
