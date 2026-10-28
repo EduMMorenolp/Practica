@@ -20,3 +20,27 @@ const fechaFin = new Date("2026-01-15");
 // 3.3 Formato localizado
 const evento = new Date("2026-12-25T18:30:00");
 // TODO: Imprime la fecha formateada en español con evento.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }):
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (Date getters)', () => typeof ahora !== 'undefined' && ahora instanceof Date, 'Crea new Date() e inspecciona getFullYear, getMonth, getDate');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

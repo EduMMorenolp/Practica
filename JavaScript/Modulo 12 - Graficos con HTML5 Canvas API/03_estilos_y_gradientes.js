@@ -16,3 +16,29 @@ const pincel = {
 // TODO: Cambia 'strokeStyle' a un color amarillo (ej. "#f59e0b").
 // TODO: Establece 'lineWidth' en 6.
 // Luego imprime el objeto 'pincel' resultante:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (Estilos canvas)', () => {
+    return ctx.fillStyle !== '#000000' && ctx.strokeStyle !== '#000000' && ctx.lineWidth === 6;
+  }, 'Configura fillStyle, strokeStyle y lineWidth = 6');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

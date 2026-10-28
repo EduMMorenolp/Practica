@@ -37,3 +37,32 @@ class Animal {
 }
 
 // TODO: Crea la clase 'Perro' que extienda de Animal, reciba (nombre, raza) y sobrescriba emitirSonido() retornando "¡Guau!":
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (CuentaBancaria #saldo)', () => typeof CuentaBancaria === 'function', 'Crea la clase CuentaBancaria con campo privado #saldo');
+  await validar('RETO 3.2 (Herencia Perro)', () => {
+    if (typeof Perro !== 'function') return false;
+    const p = new Perro('Firulais', 'Labrador');
+    return p.emitirSonido() === '¡Guau!';
+  }, 'Clase Perro debe extender de Animal y retornar "¡Guau!" en emitirSonido()');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

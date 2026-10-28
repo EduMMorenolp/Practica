@@ -15,3 +15,27 @@ function delegadoHandler(e) {
 // Pruebas para validar tu función:
 delegadoHandler({ target: { tagName: "BUTTON", className: "btn-eliminar", datasetId: "42" } });
 delegadoHandler({ target: { tagName: "SPAN", className: "badge", datasetId: null } });
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 2.1 (Delegación de eventos)', () => typeof contenedor.listeners['click'] === 'function', 'Asigna el manejador de click en contenedor evaluando target');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

@@ -26,3 +26,30 @@ const carrito = [
 
 // 3.4 Búsqueda con .find()
 // TODO: Encuentra el producto con id === 3:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (map)', () => typeof nombresProductos !== 'undefined' && Array.isArray(nombresProductos) && nombresProductos.length > 0, 'Obtén los nombres con .map()');
+  await validar('RETO 3.2 (filter)', () => typeof conStock !== 'undefined' && Array.isArray(conStock) && conStock.every(p => p.stock), 'Filtra productos con stock === true');
+  await validar('RETO 3.3 (reduce)', () => typeof totalCarrito === 'number' && totalCarrito > 0, 'Suma los precios con .reduce()');
+  await validar('RETO 3.4 (find)', () => typeof productoBuscado !== 'undefined' && productoBuscado && productoBuscado.id === 3, 'Encuentra el producto id === 3 con .find()');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

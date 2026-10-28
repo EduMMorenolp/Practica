@@ -15,3 +15,27 @@ const usuariosRoles = new Map();
 // TODO 1: Agrega clave "admin" con valor "SuperUsuario" usando .set()
 // TODO 2: Agrega clave "editor" con valor "EditorContenido"
 // TODO 3: Consulta el valor de "admin" con .get("admin") e imprime si existe con .has("invitado"):
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 4.1 (Set sin duplicados)', () => typeof sinDuplicados !== 'undefined' && Array.isArray(sinDuplicados) && sinDuplicados.length === 5, 'Limpia duplicados usando [...new Set(numerosDuplicados)]');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

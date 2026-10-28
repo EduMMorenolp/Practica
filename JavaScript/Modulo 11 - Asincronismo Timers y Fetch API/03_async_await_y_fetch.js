@@ -27,3 +27,31 @@ async function cargarDatos(debeFuncionar) {
 // Pruebas:
 cargarDatos(true);
 cargarDatos(false);
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (cargarDatos async)', async () => {
+    if (typeof cargarDatos !== 'function') return false;
+    const r = await cargarDatos(true);
+    return r && r.status === 200;
+  }, 'cargarDatos(true) debe resolver con status 200');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

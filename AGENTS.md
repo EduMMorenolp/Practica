@@ -54,4 +54,19 @@ d:/Proyectos/Practice/
    - Usar estándares modernos de JavaScript (ES6+), priorizando `const` y `let` sobre `var`, funciones flecha cuando corresponda, etc.
 
 3. **Ejecución y Comprobación**:
-   - Los scripts se pueden probar con Node.js (`node <archivo.js>`) o mediante el navegador/consola según corresponda.
+   - Los scripts se pueden probar con Node.js (`node <archivo.js>`) o mediante el runner de la plataforma web.
+
+4. **Suite de Validación Automática Obligatoria**:
+   - Todo ejercicio práctico (`.js`) **DEBE** incluir al final una sección protegida con el encabezado exacto:
+     ```javascript
+     // ==========================================
+     // 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+     // ==========================================
+     ```
+   - **Propósito**: Evaluar cada reto de forma aislada e independiente mediante aserciones claras:
+     - Mostrar `✔ RETO X.X ...` cuando la solución es correcta.
+     - Mostrar `❌ RETO X.X ...` con una pista descriptiva del error puntual o indicando si la ruta/función aún no está implementada (en vez de lanzar un error genérico o romper toda la ejecución).
+   - **Cierre Limpio y Resiliencia**:
+     - En ejercicios con servidores (Express / Node `http` o `net`), levantar la prueba en puerto efímero (`port: 0`), ejecutar las peticiones mediante `fetch()` / cliente y **siempre cerrar el servidor** en el bloque `finally` (`server.close()`) para que el proceso termine con exit code `0`.
+     - En ejercicios con operaciones asíncronas o streams, usar timeouts protectores para evitar bloqueos indefinidos si falta invocar callbacks o promesas.
+

@@ -42,3 +42,33 @@ kanban.cambiarEstado(t1?.id, "COMPLETADA");
 
 console.log("Completadas:", kanban.filtrarPorEstado("COMPLETADA"));
 console.log("Pendientes:", kanban.filtrarPorEstado("PENDIENTE"));
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 2.1/2.2/2.3 (Kanban)', () => {
+    const k = new GestorTareas();
+    const t = k.agregarTarea('Tarea 1', 'ALTA');
+    if (!t || t.estado !== 'PENDIENTE') return false;
+    k.cambiarEstado(t.id, 'COMPLETADA');
+    return k.filtrarPorEstado('COMPLETADA').length === 1 && k.filtrarPorEstado('PENDIENTE').length === 0;
+  }, 'GestorTareas debe permitir agregar, cambiar estado y filtrar');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

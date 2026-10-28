@@ -39,3 +39,28 @@ const usuario = {
 };
 
 // TODO: Imprime usuario.saludoTradicional() y usuario.saludoFlecha(). Observa la diferencia:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (cuadrado)', () => typeof cuadrado === 'function' && cuadrado(6) === 36, 'const cuadrado = n => n * n');
+  await validar('RETO 3.2 (crearProducto)', () => typeof crearProducto === 'function' && crearProducto(1, 'Mouse').nombre === 'Mouse', 'crearProducto debe retornar un objeto ({ id, nombre })');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

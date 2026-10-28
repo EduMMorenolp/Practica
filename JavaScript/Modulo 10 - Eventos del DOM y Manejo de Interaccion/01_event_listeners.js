@@ -27,3 +27,27 @@ const boton = new EventEmitterEmulated();
 
 // Despacho del evento para probar tu solución:
 boton.dispatch("click", { x: 150, y: 200 });
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1 (addEventListener click)', () => boton.listeners['click'] && boton.listeners['click'].length > 0, 'Registra un listener con boton.addEventListener("click", ...)');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

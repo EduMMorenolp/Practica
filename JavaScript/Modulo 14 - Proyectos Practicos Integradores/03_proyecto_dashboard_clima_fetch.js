@@ -31,3 +31,31 @@ async function obtenerReporteClima(ciudad) {
 // Pruebas:
 obtenerReporteClima("Buenos Aires");
 obtenerReporteClima("Londres");
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (obtenerReporteClima)', async () => {
+    if (typeof obtenerReporteClima !== 'function') return false;
+    const rep = await obtenerReporteClima('Madrid');
+    return typeof rep === 'string' && rep.includes('Madrid') && rep.includes('°C');
+  }, 'obtenerReporteClima(ciudad) debe retornar un string formateado con la ciudad y temperatura');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

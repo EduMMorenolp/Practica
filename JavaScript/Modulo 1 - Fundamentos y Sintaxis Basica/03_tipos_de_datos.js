@@ -43,3 +43,29 @@ const precioTexto = "150";
 // "", "JavaScript", 0, 100, null, undefined, NaN
 // Observa cuáles dan false (falsy) y cuáles true (truthy).
 // TODO: Escribe tus console.log(Boolean(...)) aquí abajo:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (typeof tipos primitivos)', () => typeof nombre === 'string' && typeof edad === 'number' && typeof esActivo === 'boolean' && typeof sinDefinir === 'undefined', 'Declara nombre (string), edad (number), esActivo (boolean) y sinDefinir (undefined)');
+  await validar('RETO 3.2 (null histórico)', () => typeof usuarioActual !== 'undefined' && usuarioActual === null, 'Declara usuarioActual = null');
+  await validar('RETO 3.3 (Casting Number)', () => typeof precioTexto !== 'undefined' && Number(precioTexto) + 50 === 200, 'Convierte precioTexto con Number() y suma 50');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

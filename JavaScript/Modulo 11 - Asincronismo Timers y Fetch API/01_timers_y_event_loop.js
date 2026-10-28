@@ -16,3 +16,27 @@ console.log("2. Instrucción síncrona B");
 
 // RETO 1.2: Temporizador acumulativo con setTimeout o setInterval
 // TODO: Usa setTimeout para imprimir a los 50ms: "4. Fin del ejercicio de timers"
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1/1.2 (Timers)', () => typeof setTimeout === 'function', 'Usa setTimeout para programar tareas asíncronas');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

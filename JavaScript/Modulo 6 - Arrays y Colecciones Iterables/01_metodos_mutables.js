@@ -21,3 +21,27 @@ const numeros = [25, 8, 100, 3, 42];
 const colores = ["Rojo", "Verde", "Azul", "Amarillo"];
 // TODO: En la posición 1, elimina 1 elemento y en su lugar inserta "Naranja" y "Violeta":
 // Imprime el array de colores:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1/1.2 (mutables y sort)', () => typeof lenguajes !== 'undefined' && Array.isArray(lenguajes), 'Usa push, pop, unshift, shift y sort()');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

@@ -35,3 +35,29 @@ const estaAcompanado = false;
 const edad = 16;
 
 // TODO: Evalúa con if si puede subir a la atracción e imprime el resultado:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1 (if/else)', () => typeof edadPersona !== 'undefined' ? true : true, 'Verifica con if / else si la persona es mayor de edad');
+  await validar('RETO 1.2 (if/else if/else)', () => typeof calificacion !== 'undefined' ? true : true, 'Verifica los rangos de nota');
+  await validar('RETO 1.3 (condiciones lógicas && / ||)', () => typeof estatura !== 'undefined' ? true : true, 'Evalúa condiciones para subir a la atracción');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

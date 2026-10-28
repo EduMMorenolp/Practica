@@ -44,3 +44,31 @@ const otroDesarrollador = { nombre: "Martín" };
 
 // TODO 1: Usa .call() para invocar desarrollador.presentarse prestando el contexto de 'otroDesarrollador' con "JavaScript":
 // TODO 2: Usa .bind() para crear una función permanente 'presentarMartin' y luego ejecútala con "TypeScript":
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 4.2 (crearContador closure)', () => {
+    if (typeof crearContador !== 'function') return false;
+    const c = crearContador();
+    return c() === 1 && c() === 2;
+  }, 'crearContador() debe devolver una función que retorne 1, 2, 3...');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

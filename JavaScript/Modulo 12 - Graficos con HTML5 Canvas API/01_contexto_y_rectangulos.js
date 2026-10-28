@@ -31,3 +31,30 @@ const ctx = new EmulatedCanvasContext(800, 600);
 
 
 console.log("Operaciones registradas en canvas:", ctx.operations);
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1/1.2 (fillRect & clearRect)', () => {
+    return ctx.operaciones.some(op => op.tipo === 'fillRect') &&
+           ctx.operaciones.some(op => op.tipo === 'clearRect');
+  }, 'Usa ctx.fillRect(...) y ctx.clearRect(...)');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

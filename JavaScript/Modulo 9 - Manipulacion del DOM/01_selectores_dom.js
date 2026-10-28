@@ -34,3 +34,28 @@ const fakeDOM = {
 // RETO 1.2: Búsqueda por clase con querySelector
 // TODO: Usa fakeDOM.querySelector() para seleccionar el elemento con clase ".btn-primary"
 // e imprime en consola su propiedad .text:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1 (getElementById)', () => fakeDOM.getElementById('titulo-principal')?.text === 'Mi Sitio Web', 'getElementById debe encontrar el h1 con id "titulo-principal"');
+  await validar('RETO 1.2 (querySelector)', () => fakeDOM.querySelector('.btn-primary')?.text === 'Enviar', 'querySelector debe encontrar el botón con clase ".btn-primary"');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

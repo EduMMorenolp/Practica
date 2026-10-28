@@ -31,3 +31,27 @@ let saldo = 100;
 let numero = 10;
 // TODO: Escribe un do...while que imprima el valor de numero e incremente en 1,
 // con la condición (numero < 5). Observa qué imprime.
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 4.1/4.2 (while)', () => typeof contador !== 'undefined', 'Implementa los bucles while ascendente y descendente');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

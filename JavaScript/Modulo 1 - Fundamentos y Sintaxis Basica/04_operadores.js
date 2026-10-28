@@ -62,3 +62,29 @@ const visitas = 0;
 
 // TODO: Evalúa `visitas || 10` y `visitas ?? 10`.
 // Imprime ambos resultados y observa por qué `??` respeta el número 0 mientras que `||` lo reemplaza por 10.
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 4.1 (Aritmética)', () => 25 + 15 === 40 && 19 % 2 === 1 && 2 ** 8 === 256, 'Calcula 25+15, 19%2 y 2**8');
+  await validar('RETO 4.2 (Asignación)', () => typeof saldo !== 'undefined' && saldo === 65, 'saldo debe ser 65 tras las operaciones');
+  await validar('RETO 4.4 (Operadores lógicos)', () => typeof puedeComprar !== 'undefined' && typeof puedeComprar === 'boolean', 'Declara la variable booleana puedeComprar');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

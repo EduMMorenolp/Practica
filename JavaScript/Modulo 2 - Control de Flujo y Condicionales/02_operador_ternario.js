@@ -32,3 +32,28 @@ const esPremium = true;
 // Si es distinta de 1 (0, 2, 3...), debe ser "artículos".
 const cantidadArticulos = 3;
 // TODO: Resuelve con operador ternario e imprime: `${cantidadArticulos} ${unidad}`
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 2.1 (Ternario estado)', () => typeof estado !== 'undefined' && (estado === 'Aprobado' || estado === 'Reprobado'), 'Declara estado = nota >= 7 ? "Aprobado" : "Reprobado"');
+  await validar('RETO 2.3 (Ternario singular/plural)', () => typeof unidad !== 'undefined' && (unidad === 'artículo' || unidad === 'artículos'), 'unidad debe ser "artículo" o "artículos" según la cantidad');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

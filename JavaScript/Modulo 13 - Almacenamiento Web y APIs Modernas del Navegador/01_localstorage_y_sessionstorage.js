@@ -24,3 +24,30 @@ const preferencias = { tema: "dark", idioma: "es", fontSize: 16 };
 // RETO 1.2: Leer y deserializar desde LocalStorage
 // TODO: Obtén el valor de "config_app" con localStorage.getItem(),
 // deserialízalo con JSON.parse() e imprime: "Tema configurado: " + config.tema:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1 (localStorage.setItem)', () => {
+    const raw = localStorage.getItem('config_app');
+    return raw && JSON.parse(raw).tema === 'oscuro';
+  }, 'Guarda "config_app" en localStorage usando JSON.stringify');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

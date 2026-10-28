@@ -24,3 +24,27 @@ const constantes = Object.freeze({
 });
 
 // TODO: Intenta modificar constantes.PI = 4.0; e imprime constantes.PI para verificar que no cambió:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 2.2 (Object.freeze)', () => typeof constantes !== 'undefined' && Object.isFrozen(constantes), 'Usa Object.freeze(constantes)');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

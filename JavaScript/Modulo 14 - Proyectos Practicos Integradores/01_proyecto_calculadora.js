@@ -30,3 +30,32 @@ console.log("Suma 15 + 25:", calc.operar("+", 15, 25));
 console.log("División 100 / 4:", calc.operar("/", 100, 4));
 console.log("División 10 / 0:", calc.operar("/", 10, 0));
 console.log("Historial:", calc.obtenerHistorial());
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1 (Calculadora)', () => {
+    const c = new Calculadora();
+    return c.operar('+', 15, 25) === 40 &&
+           c.operar('/', 10, 0) === 'Error: división por cero' &&
+           c.obtenerHistorial().length === 2;
+  }, 'Calculadora.operar debe resolver suma, división por cero y registrar en historial');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

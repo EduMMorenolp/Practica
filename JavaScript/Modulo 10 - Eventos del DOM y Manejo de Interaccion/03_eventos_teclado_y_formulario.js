@@ -23,3 +23,31 @@ function validarFormulario(formEvent) {
 
 console.log("Formulario 1 válido?:", validarFormulario({ email: "user@test.com", terminosAceptados: true }));
 console.log("Formulario 2 válido?:", validarFormulario({ email: "invalido", terminosAceptados: true }));
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.2 (validarEnvio)', () => {
+    if (typeof validarEnvio !== 'function') return false;
+    return validarEnvio({ email: 'test@mail.com', terminosAceptados: true }) === true &&
+           validarEnvio({ email: 'invalido', terminosAceptados: true }) === false;
+  }, 'validarEnvio debe verificar que contenga @ y terminosAceptados === true');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

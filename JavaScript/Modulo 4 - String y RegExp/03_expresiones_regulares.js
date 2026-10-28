@@ -30,3 +30,27 @@ const registro = "ID: 450, Precio: 1200, Stock: 35";
 const texto = "JavaScript es asombroso";
 // Pista: /[aeiou]/gi
 // TODO: Reemplaza todas las vocales de 'texto' por '*' usando .replace() e imprime el resultado:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 3.1 (regexCP test)', () => typeof regexCP !== 'undefined' && regexCP.test('1425') && !regexCP.test('14A5'), 'regexCP debe validar 4 dígitos numéricos exactos (^\\d{4}$)');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

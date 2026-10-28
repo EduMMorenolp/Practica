@@ -35,3 +35,27 @@ const entradaSucia = "   ALUMNO_PROMEDIO   ";
 const frase = "manzana,pera,naranja,uva";
 // TODO 1: Divide la frase en un array de frutas separadas por coma usando .split(','):
 // TODO 2: Reemplaza "manzana" por "frutilla" usando .replace():
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1/1.2 (Métodos string)', () => typeof lenguaje !== 'undefined' && lenguaje.length > 0, 'Usa .length, [0], .includes, .indexOf');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

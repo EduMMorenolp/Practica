@@ -21,3 +21,27 @@ function createElement(tag, text) {
 // 3. "Construir aplicaciones reales"
 // TODO: Inserta los 3 elementos en 'lista' usando lista.append():
 // Luego imprime los textos de lista.children:
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 4.1 (append nodos)', () => lista.children.length === 3, 'Crea y haz append de 3 elementos <li> en lista');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();

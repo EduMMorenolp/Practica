@@ -29,3 +29,29 @@ console.log("=== TEMA 1: DECLARACIÓN Y EXPRESIONES ===");
 // funcionElevada(); // ¿Funciona?
 
 // TODO: Define aquí abajo function funcionElevada() { console.log("¡Fui elevada por Hoisting!"); }
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 1.1 (saludar)', () => typeof saludar === 'function' && typeof saludar('Ana') === 'string', 'Define function saludar(nombre)');
+  await validar('RETO 1.2 (calcularArea)', () => typeof calcularArea === 'function' && calcularArea(5, 8) === 40, 'Define const calcularArea = function(ancho, alto)');
+  await validar('RETO 1.3 (hoisting)', () => typeof funcionElevada === 'function', 'Define function funcionElevada()');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();
