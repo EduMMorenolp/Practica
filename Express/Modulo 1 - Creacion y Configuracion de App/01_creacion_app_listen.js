@@ -15,15 +15,36 @@ const app = null;
 // TODO: Usa app.get('/', (req, res) => { ... }) para responder con el texto: "¡Hola Express!"
 
 
-// RETO 1.3: Iniciar y cerrar servidor de prueba
-// TODO: Si 'app' existe, llama a app.listen(0, function() { ... })
-// Imprime el puerto asignado y luego invoca this.close() para que el script termine limpiamente:
-if (app) {
-  const server = app.listen(0, () => {
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA
+// ==========================================
+async function testApp() {
+  if (!app) {
+    console.log("❌ RETO 1.1: La constante 'app' aún no está instanciada (es null).");
+    return;
+  }
+  console.log("✔ RETO 1.1: App instanciada con express().");
+
+  const server = app.listen(0, async () => {
     const port = server.address().port;
-    console.log(`Servidor de prueba iniciado en el puerto: ${port}`);
-    server.close(() => {
-      console.log("Servidor cerrado con éxito.");
-    });
+    const baseUrl = `http://localhost:${port}`;
+    try {
+      const res = await fetch(`${baseUrl}/`);
+      const texto = await res.text();
+      if (res.status === 200 && texto.includes("Hola Express")) {
+        console.log(`✔ RETO 1.2: GET / respondió status 200 y mensaje: "${texto}"`);
+      } else if (res.status === 404) {
+        console.log("❌ RETO 1.2: La ruta GET '/' aún no está definida (recibió 404).");
+      } else {
+        console.log(`❌ RETO 1.2: La respuesta fue status ${res.status}: "${texto}"`);
+      }
+    } catch (err) {
+      console.log(`❌ Error al conectar con el servidor: ${err.message}`);
+    } finally {
+      server.close();
+      console.log("\n--- Fin de la comprobación ---");
+    }
   });
 }
+
+testApp();
