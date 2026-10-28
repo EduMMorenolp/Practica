@@ -10,8 +10,9 @@ console.log("=== ENCADENAMIENTO CON APP.ROUTE ===");
 
 let peticionesRegistradas = [];
 
-// RETO 2.1: Usar app.all() para interceptar peticiones a /api/*
-// TODO: Configura app.all('/api/*', (req, res, next) => { ... })
+// RETO 2.1: Usar app.all() para interceptar peticiones a /api/...
+// TODO: Configura app.all('/api/{*ruta}', (req, res, next) => { ... })
+// (En Express 5 el comodín se escribe '{*nombre}'; el antiguo '/api/*' lanza error)
 // Registra en el array 'peticionesRegistradas.push(req.method)' y llama a next().
 
 

@@ -5,18 +5,60 @@
 
 console.log("=== TEMA 2: OBJETO PROCESS ===");
 
-// RETO 2.1: Argumentos de línea de comandos (process.argv)
-// process.argv[0] es la ruta al binario de node, process.argv[1] es la ruta al archivo ejecutado.
-// TODO: Extrae únicamente los argumentos pasados por el usuario usando .slice(2) e imprímelos:
-const argumentosUsuario = null; // Reemplaza null con process.argv.slice(2)
-console.log("Argumentos extra:", argumentosUsuario);
+let versionNode = null;
+let plataforma = null;
+let modo = null;
+let argumentos = null;
+let memoriaMB = null;
+
+// RETO 2.1: Información del proceso
+// TODO: Asigna process.version a 'versionNode' y process.platform a 'plataforma'
 
 
-// RETO 2.2: Variables de entorno (process.env)
-// TODO: Si 'process.env.PORT' no está definido, asigna por defecto el puerto 3000 a la variable 'puerto'
-// usando el operador nullish (??). Imprime el puerto:
+// RETO 2.2: Variables de entorno
+// TODO: Asigna process.env.APP_MODO = "practica" y luego lee ese valor en 'modo'
 
 
-// RETO 2.3: Métricas de ejecución
-// TODO: Imprime el tiempo en segundos que lleva corriendo el script con 'process.uptime()'
-// y la memoria heap usada en Megabytes con 'Math.round(process.memoryUsage().heapUsed / 1024 / 1024)':
+// RETO 2.3: Argumentos de línea de comandos
+// TODO: Guarda en 'argumentos' solo los argumentos del usuario (process.argv sin los 2 primeros)
+// Prueba: node archivo.js hola mundo
+
+
+// RETO 2.4: Uso de memoria
+// TODO: Guarda en 'memoriaMB' el heapUsed de process.memoryUsage() convertido a MB (redondeado)
+
+
+// ==========================================
+// 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no modificar)
+// ==========================================
+async function validar(nombre, condicion, pista) {
+  try {
+    if (await condicion()) {
+      console.log('✔ ' + nombre);
+      return true;
+    }
+    console.log('❌ ' + nombre + ': ' + pista);
+  } catch (err) {
+    console.log('❌ ' + nombre + ': Error -> ' + err.message);
+  }
+  return false;
+}
+
+function conTiempo(promesa, ms = 1500) {
+  let id;
+  const limite = new Promise((_, rechazar) => {
+    id = setTimeout(() => rechazar(new Error('Tiempo agotado (' + ms + 'ms). ¿Falta llamar a resolve() o al callback?')), ms);
+  });
+  return Promise.race([Promise.resolve(promesa), limite]).finally(() => clearTimeout(id));
+}
+
+(async () => {
+  console.log('\n--- Comprobación ---');
+
+  await validar('RETO 2.1 (version y platform)', () => versionNode === process.version && plataforma === process.platform, 'Usa process.version y process.platform');
+  await validar('RETO 2.2 (process.env)', () => modo === 'practica' && process.env.APP_MODO === 'practica', 'process.env.APP_MODO debe ser "practica" y leerse en modo');
+  await validar('RETO 2.3 (process.argv)', () => Array.isArray(argumentos) && argumentos.length === process.argv.length - 2, 'argumentos debe ser process.argv.slice(2)');
+  await validar('RETO 2.4 (memoryUsage)', () => Number.isInteger(memoriaMB) && memoriaMB > 0 && memoriaMB < 2048, 'memoriaMB debe ser un entero en MB (Math.round(heapUsed / 1024 / 1024))');
+
+  console.log('\n--- Fin de la comprobación ---\n');
+})();
