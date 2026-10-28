@@ -17,15 +17,19 @@ d:/Proyectos/Practice/
 ├── styles.css                         # Estilos de la app interactiva
 ├── app.js                             # Lógica de runner interactivo y progreso
 ├── JavaScript/
-│   ├── TEMARIO.md                     # Roadmap completo y temario general
-│   ├── Modulo 1/                      # Fundamentos y Sintaxis Básica
-│   │   ├── Modulo.md                  # Teoría explicativa del módulo
-│   │   ├── 01_salidas_y_variables.js  # Ejercicios prácticos a mano
-│   │   ├── 02_tipos_de_datos.js       # Ejercicios prácticos a mano
-│   │   └── 03_operadores.js           # Ejercicios prácticos a mano
-│   ├── Modulo 2/                      # Control de Flujo y Funciones
-│   │   ├── Modulo.md
+│   ├── TEMARIO.md                     # Roadmap completo de JS (14 Módulos)
+│   ├── Modulo 1 - Fundamentos y Sintaxis Basica/
+│   │   ├── Modulo 1 - Fundamentos y Sintaxis Basica.md
 │   │   └── ...
+│   └── ...
+│
+├── NodeJS/
+│   ├── TEMARIO.md                     # Roadmap completo de Node.js (15 Módulos)
+│   ├── Modulo 1 - Globales y Entorno/
+│   │   ├── Modulo 1 - Globales y Entorno.md
+│   │   ├── 01_globales_basicos.js
+│   │   ├── 02_objeto_process.js
+│   │   └── 03_console_avanzada.js
 │   └── ...
 ```
 
