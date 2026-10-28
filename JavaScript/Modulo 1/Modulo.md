@@ -102,23 +102,23 @@ const intentos = 0 ?? 3;            // 0 (con || habría dado 3 porque 0 es fals
 ## 🛠️ Ejercicios Prácticos del Módulo (1 a 1 por tema)
 Cada archivo se enfoca puntualmente en un tema del módulo con retos guiados:
 
-1. [01_salidas.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/01_salidas.js):
+1. [01_salidas.js](./01_salidas.js):
    - **1.1** Salida estándar (`console.log`).
    - **1.2** Múltiples argumentos.
    - **1.3** Salidas especializadas (`info`, `warn`, `error`).
 
-2. [02_variables_y_constantes.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/02_variables_y_constantes.js):
+2. [02_variables_y_constantes.js](./02_variables_y_constantes.js):
    - **2.1** Inmutabilidad con `const`.
    - **2.2** Reasignación con `let`.
    - **2.3** Alcance de bloque (*block scope*).
 
-3. [03_tipos_de_datos.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/03_tipos_de_datos.js):
+3. [03_tipos_de_datos.js](./03_tipos_de_datos.js):
    - **3.1** Identificación de primitivos con `typeof`.
    - **3.2** La peculiaridad histórica de `null`.
    - **3.3** Conversión explícita (`Number()`, etc.).
    - **3.4** Valores *falsy* y *truthy* con `Boolean()`.
 
-4. [04_operadores.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/04_operadores.js):
+4. [04_operadores.js](./04_operadores.js):
    - **4.1** Operadores aritméticos (`+`, `-`, `*`, `/`, `%`, `**`).
    - **4.2** Operadores de asignación (`=`, `+=`, `-=`, `*=`, `/=`).
    - **4.3** Comparación estricta (`===`) vs débil (`==`).

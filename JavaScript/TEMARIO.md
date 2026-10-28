@@ -24,19 +24,19 @@
 ---
 
 ## Módulo 1: Fundamentos y Sintaxis Básica
-*Ruta: [`JavaScript/Modulo 1/`](file:///d:/Proyectos/Practice/JavaScript/Modulo%201)*
+*Ruta: [`Modulo 1/`](./Modulo%201/)*
 
-- **Teoría del Módulo**: [Modulo.md](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/Modulo.md)
-- **1. Salidas y Ejecución**: [01_salidas.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/01_salidas.js)
+- **Teoría del Módulo**: [Modulo.md](./Modulo%201/Modulo.md)
+- **1. Salidas y Ejecución**: [01_salidas.js](./Modulo%201/01_salidas.js)
   - `console.log()`, `console.info()`, `console.warn()`, `console.error()`, `console.table()`, `console.time()`.
-- **2. Variables y Constantes**: [02_variables_y_constantes.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/02_variables_y_constantes.js)
+- **2. Variables y Constantes**: [02_variables_y_constantes.js](./Modulo%201/02_variables_y_constantes.js)
   - `const` (inmutabilidad de identificador), `let` (alcance de bloque), `var` (alcance de función y *hoisting*).
-- **3. Tipos de Datos Primitivos**: [03_tipos_de_datos.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/03_tipos_de_datos.js)
+- **3. Tipos de Datos Primitivos**: [03_tipos_de_datos.js](./Modulo%201/03_tipos_de_datos.js)
   - `string`, `number`, `boolean`, `null`, `undefined`, `symbol`, `bigint`.
   - Operador `typeof` y la peculiaridad de `typeof null === "object"`.
   - Coerción implícita vs conversión explícita (`Number()`, `String()`, `Boolean()`).
   - Valores *truthy* y *falsy*.
-- **4. Operadores**: [04_operadores.js](file:///d:/Proyectos/Practice/JavaScript/Modulo%201/04_operadores.js)
+- **4. Operadores**: [04_operadores.js](./Modulo%201/04_operadores.js)
   - **4.1 Aritméticos**: Suma (`+`), resta (`-`), multiplicación (`*`), división (`/`), módulo o resto (`%`), exponente (`**`).
   - **4.2 Asignación**: `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `**=`.
   - **4.3 Comparación**: Igualdad estricta (`===`, `!==`) vs débil (`==`, `!=`), relacionales (`>`, `<`, `>=`, `<=`).
@@ -46,7 +46,7 @@
 ---
 
 ## Módulo 2: Control de Flujo y Estructuras Condicionales
-*Ruta: [`JavaScript/Modulo 2/`](file:///d:/Proyectos/Practice/JavaScript/Modulo%202)*
+*Ruta: [`Modulo 2/`](./Modulo%202/)*
 
 - **2.1 Estructuras Condicionales If / Else**
   - `if`, `else if`, `else`.

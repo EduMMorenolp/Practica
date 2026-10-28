@@ -36,7 +36,7 @@ Practice/
 
 ## 🚀 Cómo Usar la Plataforma Web Local
 
-Simplemente abre el archivo [`index.html`](file:///d:/Proyectos/Practice/index.html) directamente en tu navegador favorito:
+Simplemente abre el archivo [`index.html`](./index.html) directamente en tu navegador favorito:
 - Puedes hacer doble clic sobre `index.html` en el explorador de archivos, o
 - Usar cualquier servidor local liviano si lo deseas (como Live Server o `npx serve .`).
 
