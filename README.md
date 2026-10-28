@@ -22,14 +22,17 @@ Practice/
 ├── README.md                   # Documentación para el usuario
 ├── AGENTS.md                   # Contexto, reglas e instrucciones para IA
 │
-└── JavaScript/
-    ├── TEMARIO.md              # Temario general y roadmap progresivo
-    ├── Modulo 1/               # Fundamentos y Sintaxis Básica
-    │   ├── Modulo.md           # Teoría completa del módulo
-    │   ├── 01_salidas_y_variables.js
-    │   ├── 02_tipos_de_datos.js
-    │   └── 03_operadores.js
-    └── Modulo 2/               # Control de Flujo y Funciones (en progreso)
+├── JavaScript/
+│   ├── TEMARIO.md                     # Roadmap completo de JS (14 Módulos)
+│   └── Modulo X - .../
+│
+├── NodeJS/
+│   ├── TEMARIO.md                     # Roadmap completo de Node.js (15 Módulos)
+│   └── Modulo X - .../
+│
+└── Express/
+    ├── TEMARIO.md                     # Roadmap completo de Express.js (10 Módulos)
+    └── Modulo X - .../
 ```
 
 ---

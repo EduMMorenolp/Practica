@@ -47,7 +47,7 @@ function getProjectStructure() {
       categoryItems.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
       for (const modItem of categoryItems) {
-        if (modItem.isDirectory()) {
+        if (modItem.isDirectory() && modItem.name !== 'node_modules' && !modItem.name.startsWith('.')) {
           const modulePath = path.join(categoryPath, modItem.name);
           const moduleFiles = fs.readdirSync(modulePath, { withFileTypes: true });
 

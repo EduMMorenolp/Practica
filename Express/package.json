@@ -1,0 +1,16 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "Entorno interactivo y estructurado para reaprender y practicar programación a mano de forma progresiva. Actualmente enfocado en **JavaScript**, con una arquitectura escalable preparada para futuros lenguajes y temas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
