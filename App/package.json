@@ -4,7 +4,8 @@
   "description": "Plataforma interactiva para desoxidarse y practicar código a mano con runner en vivo",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node --watch server.js"
   },
   "keywords": ["practice", "javascript", "learning"],
   "author": "",

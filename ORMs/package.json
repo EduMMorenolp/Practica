@@ -1,0 +1,15 @@
+{
+  "name": "practice-orms",
+  "version": "1.0.0",
+  "description": "Práctica y ejercicios de ORMs en Node.js (Sequelize, Drizzle ORM, Prisma)",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Ejecuta node <archivo.js> o usa el Practice Hub\""
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.12",
+    "drizzle-orm": "^0.45.4",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
+  }
+}

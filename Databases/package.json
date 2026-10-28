@@ -1,0 +1,12 @@
+{
+  "name": "practice-databases",
+  "version": "1.0.0",
+  "description": "Práctica y ejercicios de SQL con SQLite, PostgreSQL en memoria (PGlite) y MySQL",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Ejecuta node <archivo.js> o usa el Practice Hub\""
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.12"
+  }
+}

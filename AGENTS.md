@@ -13,30 +13,33 @@ Este proyecto está diseñado para practicar y reaprender programación a mano, 
 d:/Proyectos/Practice/
 ├── README.md                          # Guía y bienvenida para el usuario
 ├── AGENTS.md                          # Este archivo: contexto y pautas generales
-├── index.html                         # Plataforma web interactiva local
-├── styles.css                         # Estilos de la app interactiva
-├── app.js                             # Lógica de runner interactivo y progreso
-├── JavaScript/
+├── App/                               # Plataforma web interactiva local y runner
+│   ├── package.json                   # Scripts para levantar el servidor web
+│   ├── server.js
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+│
+├── JavaScript/                        # 100% nativo sin dependencias
 │   ├── TEMARIO.md                     # Roadmap completo de JS (14 Módulos)
-│   ├── Modulo 1 - Fundamentos y Sintaxis Basica/
-│   │   ├── Modulo 1 - Fundamentos y Sintaxis Basica.md
-│   │   └── ...
-│   └── ...
+│   └── Modulo X - .../
 │
-├── NodeJS/
+├── NodeJS/                            # 100% nativo sin dependencias
 │   ├── TEMARIO.md                     # Roadmap completo de Node.js (15 Módulos)
-│   ├── Modulo 1 - Globales y Entorno/
-│   │   ├── Modulo 1 - Globales y Entorno.md
-│   │   └── ...
+│   └── Modulo X - .../
+│
+├── Express/                           # Track con dependencias en Express/package.json
+│   ├── package.json
+│   ├── TEMARIO.md                     # Roadmap completo de Express.js (10 Módulos)
+│   └── Modulo X - .../
+│
+├── Databases/                         # Track con dependencias en Databases/package.json
+│   ├── package.json
 │   └── ...
 │
-├── Express/
-│   ├── TEMARIO.md                     # Roadmap completo de Express.js (10 Módulos)
-│   ├── Modulo 1 - Creacion y Configuracion de App/
-│   │   ├── Modulo 1 - Creacion y Configuracion de App.md
-│   │   ├── 01_creacion_app_listen.js
-│   │   └── 02_app_set_get_locals.js
-│   └── ...
+└── ORMs/                              # Track con dependencias en ORMs/package.json
+    ├── package.json
+    └── ...
 ```
 
 ---
