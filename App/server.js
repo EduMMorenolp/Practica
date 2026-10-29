@@ -56,7 +56,7 @@ function getProjectStructure() {
           moduleFiles.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
           for (const file of moduleFiles) {
-            if (file.isFile() && (file.name.endsWith('.js') || file.name.endsWith('.ts') || file.name.endsWith('.html'))) {
+            if (file.isFile() && (file.name.endsWith('.js') || file.name.endsWith('.ts') || file.name.endsWith('.html') || file.name.endsWith('.py'))) {
               const relPath = path.join(categoryName, modItem.name, file.name).replace(/\\/g, '/');
               exercises.push({
                 fileName: file.name,
@@ -156,8 +156,12 @@ const server = http.createServer((req, res) => {
           return res.end(JSON.stringify({ error: `Archivo no encontrado: ${filePath}` }));
         }
 
-        // Ejecutar con node en un subproceso con timeout de seguridad (5 seg)
-        exec(`node "${absoluteTarget}"`, { timeout: 5000, cwd: ROOT_DIR }, (error, stdout, stderr) => {
+        // Determinar si corre con python o con node
+        const isPython = absoluteTarget.endsWith('.py');
+        const runnerCmd = isPython ? `python "${absoluteTarget}"` : `node "${absoluteTarget}"`;
+
+        // Ejecutar en un subproceso con timeout de seguridad (10 seg para cálculos numéricos)
+        exec(runnerCmd, { timeout: 10000, cwd: ROOT_DIR }, (error, stdout, stderr) => {
           const success = !error && !stderr;
           res.writeHead(200, { 'Content-Type': 'application/json' });
           return res.end(JSON.stringify({

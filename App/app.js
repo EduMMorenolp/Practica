@@ -133,14 +133,19 @@ function renderContent() {
     mod.exercises.forEach(ex => {
       const isDone = completedExercises.has(ex.relativePath);
       const isHtml = ex.fileName.endsWith('.html');
+      const isPy = ex.fileName.endsWith('.py');
       const card = document.createElement("div");
       card.className = `exercise-card ${isDone ? 'is-checked' : ''}`;
       card.id = `card-${escapeId(ex.relativePath)}`;
 
+      const fileIcon = isHtml ? '🌐' : (isPy ? '🐍' : '📄');
+      const runnerLabel = isPy ? '▶ Ejecutar en Python' : '▶ Ejecutar en Node';
+      const terminalTitle = isHtml ? 'Instrucciones & Vista' : (isPy ? 'Terminal Output (Python)' : 'Terminal Output (Node.js)');
+
       card.innerHTML = `
         <div class="card-top">
           <div class="file-info">
-            <span class="file-name">${isHtml ? '🌐' : '📄'} ${ex.fileName}</span>
+            <span class="file-name">${fileIcon} ${ex.fileName}</span>
             <span class="file-path">${ex.relativePath}</span>
           </div>
           <div class="exercise-actions">
@@ -150,7 +155,7 @@ function renderContent() {
               </a>
             ` : `
               <button class="btn btn-primary" onclick="runFile('${ex.relativePath}')">
-                ▶ Ejecutar en Node
+                ${runnerLabel}
               </button>
             `}
             <button class="check-indicator ${isDone ? 'checked' : ''}" id="check-${escapeId(ex.relativePath)}" onclick="toggleManualCheck('${ex.relativePath}')" title="Click para marcar o desmarcar">
@@ -160,7 +165,7 @@ function renderContent() {
         </div>
         <div class="card-content">
           <div class="terminal-header">
-            <span>${isHtml ? 'Instrucciones & Vista' : 'Terminal Output (Node.js)'}</span>
+            <span>${terminalTitle}</span>
             <span id="time-${escapeId(ex.relativePath)}"></span>
           </div>
           <div class="terminal-box" id="terminal-${escapeId(ex.relativePath)}">
@@ -169,7 +174,7 @@ function renderContent() {
                 // Haz clic en "↗️ Abrir en Navegador" o abre el archivo en tu navegador para interactuar con la página y ver la suite de validación en tiempo real.
               </span>
             ` : `
-              <span class="terminal-placeholder">// Haz click en "Ejecutar en Node" para correr este archivo...</span>
+              <span class="terminal-placeholder">// Haz click en "${runnerLabel}" para correr este archivo...</span>
             `}
           </div>
         </div>
