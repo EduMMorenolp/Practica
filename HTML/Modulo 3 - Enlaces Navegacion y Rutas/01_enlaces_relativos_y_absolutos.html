@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enlaces Relativos, Absolutos y Protocolos</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 3 — Ejercicio 1</span>
+    <h1>Enlaces Externos, Pestañas Seguras y Protocolos</h1>
+    <p>Aprende a enlazar destinos de forma segura y a activar aplicaciones del sistema operativo.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.1: ENLACES EXTERNOS SEGUROS         -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #enlaces-externos:
+         1. Crea un enlace <a> con id="link-mdn" hacia "https://developer.mozilla.org"
+            - Debe abrir en pestaña nueva usando target="_blank"
+            - Debe incluir rel="noopener noreferrer" por seguridad
+            - Texto del enlace: "Documentación MDN"
+         2. Crea un enlace <a> con id="link-descarga" hacia "/archivos/guia.pdf"
+            - Debe incluir el atributo download="guia-html5.pdf"
+            - Texto del enlace: "Descargar Guía en PDF"
+    -->
+    <div id="enlaces-externos">
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.2: PROTOCOLOS MAILTO Y TEL          -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #protocolos:
+         1. Crea un enlace con id="link-correo" con href="mailto:soporte@practice.dev" y texto "Escribir a Soporte"
+         2. Crea un enlace con id="link-telefono" con href="tel:+54911223344" y texto "Llamar por Teléfono"
+    -->
+    <div id="protocolos">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 3 Ejercicio 1 ===');
+
+      // RETO 1.1: Externo seguro y Download
+      registrarTest(
+        'RETO 1.1 (Link externo seguro con target="_blank" y rel)',
+        () => {
+          const a = document.getElementById('link-mdn');
+          return a && a.href.includes('developer.mozilla.org') &&
+                 a.target === '_blank' &&
+                 a.rel.includes('noopener') &&
+                 a.textContent.trim() === 'Documentación MDN';
+        },
+        'Falta <a id="link-mdn" href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer">Documentación MDN</a>'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Atributo download)',
+        () => {
+          const a = document.getElementById('link-descarga');
+          return a && a.getAttribute('download') === 'guia-html5.pdf' &&
+                 a.getAttribute('href') === '/archivos/guia.pdf';
+        },
+        'Falta <a id="link-descarga" href="/archivos/guia.pdf" download="guia-html5.pdf">'
+      );
+
+      // RETO 1.2: Protocolos
+      registrarTest(
+        'RETO 1.2 (Protocolo mailto:)',
+        () => {
+          const a = document.getElementById('link-correo');
+          return a && a.getAttribute('href') === 'mailto:soporte@practice.dev';
+        },
+        'Falta <a id="link-correo" href="mailto:soporte@practice.dev">Escribir a Soporte</a>'
+      );
+
+      registrarTest(
+        'RETO 1.2 (Protocolo tel:)',
+        () => {
+          const a = document.getElementById('link-telefono');
+          return a && a.getAttribute('href') === 'tel:+54911223344';
+        },
+        'Falta <a id="link-telefono" href="tel:+54911223344">Llamar por Teléfono</a>'
+      );
+    });
+  </script>
+</body>
+</html>

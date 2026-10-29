@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Semántico Completo en HTML5</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    header, nav, main, article, section, aside, footer {
+      border: 1px dashed #475569;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 6px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 10 — Ejercicio 1</span>
+    <h1>Maquetación Semántica Moderna (Sin "Divitis")</h1>
+    <p>Construye la estructura de un blog utilizando exclusivamente los contenedores semánticos de HTML5.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.1: ESTRUCTURA SEMÁNTICA DEL BLOG    -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-layout:
+         Construye la maqueta completa:
+         1. <header id="cabecera-sitio">
+              <h1>Blog Tecnológico</h1>
+              <nav id="nav-sitio">
+                <a href="/">Inicio</a>
+              </nav>
+            </header>
+
+         2. <main id="contenido-principal">
+              <article id="articulo-destacado">
+                <h2>El Estándar HTML5</h2>
+                <p>La semántica permite crear webs accesibles para todos.</p>
+              </article>
+              <section id="seccion-comentarios">
+                <h3>Comentarios de la Comunidad</h3>
+              </section>
+            </main>
+
+         3. <aside id="barra-lateral">
+              <h3>Categorías Populares</h3>
+            </aside>
+
+         4. <footer id="pie-sitio">
+              <p>&copy; 2026 Blog Tecnológico</p>
+            </footer>
+    -->
+    <div id="bloque-layout">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 10 Ejercicio 1 ===');
+
+      const box = document.getElementById('bloque-layout');
+
+      registrarTest(
+        'RETO 1.1 (Header y Nav)',
+        () => {
+          const h = box?.querySelector('header#cabecera-sitio');
+          const n = h?.querySelector('nav#nav-sitio');
+          return h && n && h.querySelector('h1')?.textContent.includes('Blog Tecnológico');
+        },
+        'Falta <header id="cabecera-sitio"> con <h1> y <nav id="nav-sitio">'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Main con Article y Section)',
+        () => {
+          const m = box?.querySelector('main#contenido-principal');
+          const art = m?.querySelector('article#articulo-destacado');
+          const sec = m?.querySelector('section#seccion-comentarios');
+          return m && art && sec && art.querySelector('h2') && sec.querySelector('h3');
+        },
+        'Falta <main id="contenido-principal"> con <article id="articulo-destacado"> y <section id="seccion-comentarios">'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Aside y Footer)',
+        () => {
+          const asd = box?.querySelector('aside#barra-lateral');
+          const ftr = box?.querySelector('footer#pie-sitio');
+          return asd && ftr && asd.querySelector('h3') && ftr.textContent.includes('2026');
+        },
+        'Falta <aside id="barra-lateral"> y <footer id="pie-sitio">'
+      );
+    });
+  </script>
+</body>
+</html>

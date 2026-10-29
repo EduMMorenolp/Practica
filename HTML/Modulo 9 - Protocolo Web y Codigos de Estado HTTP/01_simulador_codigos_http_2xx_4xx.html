@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Respuestas HTTP (2XX y 4XX)</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+    .s2xx { background: #065f46; color: #34d399; }
+    .s4xx { background: #991b1b; color: #fca5a5; }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 9 — Ejercicio 1</span>
+    <h1>Páginas de Error y Respuestas HTTP (2XX y 4XX)</h1>
+    <p>Construye la maqueta semántica para una página oficial de error <span class="status-pill s4xx">404 Not Found</span> y un aviso de éxito <span class="status-pill s2xx">201 Created</span>.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.1: PÁGINA DE ERROR 404 NOT FOUND   -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-404:
+         Construye una sección <section id="pagina-404"> con:
+         1. Un encabezado <h1> con texto "404 - Página No Encontrada"
+         2. Un párrafo <p> con clase "descripcion-error" explicando que el recurso no existe.
+         3. Un enlace <a id="btn-volver-inicio" href="/">Volver al Inicio</a>
+    -->
+    <div id="bloque-404">
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.2: AVISO DE RECURSO 201 CREATED     -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-201:
+         Construye un aviso <div id="alerta-201" class="alerta-exito"> con:
+         1. Un encabezado <h2> con texto "201 - Recurso Creado con Éxito"
+         2. Un párrafo que mencione el ID generado.
+    -->
+    <div id="bloque-201">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 9 Ejercicio 1 ===');
+
+      // RETO 1.1
+      registrarTest(
+        'RETO 1.1 (Sección de error 404)',
+        () => {
+          const s = document.querySelector('#bloque-404 section#pagina-404');
+          const h1 = s?.querySelector('h1');
+          const p = s?.querySelector('p.descripcion-error');
+          const a = s?.querySelector('a#btn-volver-inicio[href="/"]');
+          return s && h1 && p && a && h1.textContent.includes('404');
+        },
+        'Falta <section id="pagina-404"> con <h1>, <p class="descripcion-error"> y <a id="btn-volver-inicio" href="/">'
+      );
+
+      // RETO 1.2
+      registrarTest(
+        'RETO 1.2 (Aviso 201 Created)',
+        () => {
+          const box = document.getElementById('alerta-201');
+          const h2 = box?.querySelector('h2');
+          return box && h2 && h2.textContent.includes('201');
+        },
+        'Falta div#alerta-201 con <h2> conteniendo "201 - Recurso Creado con Éxito"'
+      );
+    });
+  </script>
+</body>
+</html>

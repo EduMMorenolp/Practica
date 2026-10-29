@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atributos Globales y Teclado</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .editable-box {
+      border: 1px dashed #38bdf8;
+      padding: 12px;
+      border-radius: 6px;
+      background: #090d16;
+      outline: none;
+      margin-top: 10px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 8 — Ejercicio 1</span>
+    <h1>Atributos Universales: Teclado, Idioma y Edición</h1>
+    <p>Aprende a usar atributos universales como <code>tabindex</code>, <code>accesskey</code>, <code>contenteditable</code> y <code>dir</code>.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.1: TABINDEX Y ACCESSKEY             -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-accesibilidad:
+         1. Crea un botón con id="btn-guardar":
+            - Atributo accesskey="g"
+            - Atributo title="Guardar cambios rápidamente"
+            - Texto: "Guardar Datos"
+         2. Crea un div con id="tarjeta-enfocable":
+            - Atributo tabindex="0" (para permitir que se enfoque con la tecla Tab)
+            - Texto: "Soy una tarjeta enfocable por teclado"
+    -->
+    <div id="bloque-accesibilidad">
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.2: CONTENTEDITABLE Y DIR            -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-edicion:
+         1. Crea un div con id="editor-notas" y clase "editable-box":
+            - Atributo contenteditable="true"
+            - Texto inicial: "Escribe tus notas aquí libremente."
+         2. Crea un párrafo con id="texto-arabe":
+            - Atributo lang="ar"
+            - Atributo dir="rtl"
+            - Texto: "مرحبا بالعالم" (o cualquier texto de derecha a izquierda)
+    -->
+    <div id="bloque-edicion">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 8 Ejercicio 1 ===');
+
+      // RETO 1.1
+      registrarTest(
+        'RETO 1.1 (Botón con accesskey="g" y title)',
+        () => {
+          const btn = document.getElementById('btn-guardar');
+          return btn && btn.getAttribute('accesskey') === 'g' && Boolean(btn.getAttribute('title'));
+        },
+        'Falta button#btn-guardar con accesskey="g" y title'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Div con tabindex="0")',
+        () => {
+          const el = document.getElementById('tarjeta-enfocable');
+          return el && el.getAttribute('tabindex') === '0';
+        },
+        'Falta div#tarjeta-enfocable con tabindex="0"'
+      );
+
+      // RETO 1.2
+      registrarTest(
+        'RETO 1.2 (Elemento contenteditable="true")',
+        () => {
+          const ed = document.getElementById('editor-notas');
+          return ed && ed.getAttribute('contenteditable') === 'true';
+        },
+        'Falta div#editor-notas con contenteditable="true"'
+      );
+
+      registrarTest(
+        'RETO 1.2 (Párrafo con dir="rtl" y lang="ar")',
+        () => {
+          const p = document.getElementById('texto-arabe');
+          return p && p.getAttribute('dir') === 'rtl' && p.getAttribute('lang') === 'ar';
+        },
+        'Falta p#texto-arabe con dir="rtl" y lang="ar"'
+      );
+    });
+  </script>
+</body>
+</html>

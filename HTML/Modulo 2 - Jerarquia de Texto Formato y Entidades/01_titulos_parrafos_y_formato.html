@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jerarquía de Texto y Formato Semántico</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 2 — Ejercicio 1</span>
+    <h1>Jerarquía de Títulos, Párrafos y Formato</h1>
+    <p>Construye el artículo aplicando significado semántico exacto a cada elemento.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.1: JERARQUÍA Y PÁRRAFOS             -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #articulo:
+         1. Crea un <h1> con texto "La Evolución de la Web"
+         2. Crea un <h2> con texto "HTML5 y sus Estándares"
+         3. Crea un párrafo <p> que contenga la palabra "semántica" envuelta en <strong> y la palabra "accesibilidad" envuelta en <em>.
+         4. Agrega una línea horizontal <hr>.
+         5. Crea un <blockquote> con atributo cite="https://w3.org" y texto: "El poder de la Web está en su universalidad."
+    -->
+    <div id="articulo">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 2 Ejercicio 1 ===');
+
+      registrarTest(
+        'RETO 1.1 (Encabezado H1)',
+        () => {
+          const h1 = document.querySelector('#articulo h1');
+          return h1 && h1.textContent.trim() === 'La Evolución de la Web';
+        },
+        'Falta <h1>La Evolución de la Web</h1> dentro de #articulo'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Subtítulo H2)',
+        () => {
+          const h2 = document.querySelector('#articulo h2');
+          return h2 && h2.textContent.trim() === 'HTML5 y sus Estándares';
+        },
+        'Falta <h2>HTML5 y sus Estándares</h2> dentro de #articulo'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Párrafo con strong y em)',
+        () => {
+          const p = document.querySelector('#articulo p');
+          const strong = p?.querySelector('strong');
+          const em = p?.querySelector('em');
+          return strong && strong.textContent.trim() === 'semántica' &&
+                 em && em.textContent.trim() === 'accesibilidad';
+        },
+        'El <p> debe tener <strong>semántica</strong> y <em>accesibilidad</em>'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Separador HR)',
+        () => Boolean(document.querySelector('#articulo hr')),
+        'Falta el elemento <hr> dentro de #articulo'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Blockquote con Cite)',
+        () => {
+          const bq = document.querySelector('#articulo blockquote');
+          return bq && bq.getAttribute('cite') === 'https://w3.org' &&
+                 bq.textContent.includes('El poder de la Web está en su universalidad.');
+        },
+        'Falta <blockquote cite="https://w3.org">El poder de la Web está en su universalidad.</blockquote>'
+      );
+    });
+  </script>
+</body>
+</html>

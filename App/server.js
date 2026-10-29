@@ -56,7 +56,7 @@ function getProjectStructure() {
           moduleFiles.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
           for (const file of moduleFiles) {
-            if (file.isFile() && (file.name.endsWith('.js') || file.name.endsWith('.ts'))) {
+            if (file.isFile() && (file.name.endsWith('.js') || file.name.endsWith('.ts') || file.name.endsWith('.html'))) {
               const relPath = path.join(categoryName, modItem.name, file.name).replace(/\\/g, '/');
               exercises.push({
                 fileName: file.name,
@@ -173,6 +173,27 @@ const server = http.createServer((req, res) => {
         res.writeHead(500, { 'Content-Type': 'application/json' });
         return res.end(JSON.stringify({ error: err.message, stack: err.stack }));
       }
+    });
+    return;
+  }
+
+  // Servir archivos del repositorio para visualización directa (ej. abrir .html en iframe o nueva pestaña)
+  if (pathname.startsWith('/workspace/')) {
+    const relativeTarget = pathname.replace('/workspace/', '');
+    const safeTarget = path.join(ROOT_DIR, relativeTarget);
+    if (!safeTarget.startsWith(ROOT_DIR)) {
+      res.writeHead(403);
+      return res.end('Acceso denegado');
+    }
+    fs.stat(safeTarget, (err, stats) => {
+      if (err || !stats.isFile()) {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        return res.end('Archivo no encontrado');
+      }
+      const ext = path.extname(safeTarget).toLowerCase();
+      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+      res.writeHead(200, { 'Content-Type': contentType });
+      fs.createReadStream(safeTarget).pipe(res);
     });
     return;
   }

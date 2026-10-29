@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listas de Descripción (dl, dt, dd)</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    dt {
+      font-weight: bold;
+      color: #38bdf8;
+      margin-top: 10px;
+    }
+    dd {
+      margin-left: 20px;
+      color: #cbd5e1;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 4 — Ejercicio 2</span>
+    <h1>Glosarios y Listas Descriptivas (&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;)</h1>
+    <p>Aprende a estructurar metadatos, glosarios y fichas técnicas clave-valor.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 2.1: GLOSARIO DE TÉRMINOS CON DL      -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #glosario:
+         Crea una lista de descripción <dl id="lista-conceptos"> que contenga exactamente 3 pares:
+         1. <dt>HTML</dt>
+            <dd>Lenguaje de marcado para la estructura de la web.</dd>
+         2. <dt>DOM</dt>
+            <dd>Representación en memoria del árbol del documento.</dd>
+         3. <dt>W3C</dt>
+            <dd>Consorcio internacional que define los estándares web.</dd>
+    -->
+    <div id="glosario">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 4 Ejercicio 2 ===');
+
+      registrarTest(
+        'RETO 2.1 (Contenedor <dl>)',
+        () => Boolean(document.getElementById('lista-conceptos')),
+        'Falta el contenedor <dl id="lista-conceptos">'
+      );
+
+      registrarTest(
+        'RETO 2.1 (Cantidad de términos <dt> y detalles <dd>)',
+        () => {
+          const dl = document.getElementById('lista-conceptos');
+          const dts = dl ? dl.querySelectorAll('dt') : [];
+          const dds = dl ? dl.querySelectorAll('dd') : [];
+          return dts.length === 3 && dds.length === 3;
+        },
+        'Deben existir exactamente 3 elementos <dt> y 3 elementos <dd>'
+      );
+
+      registrarTest(
+        'RETO 2.1 (Contenido de los términos)',
+        () => {
+          const dl = document.getElementById('lista-conceptos');
+          const text = dl ? dl.textContent : '';
+          return text.includes('HTML') && text.includes('DOM') && text.includes('W3C');
+        },
+        'Los términos deben ser "HTML", "DOM" y "W3C" con sus respectivas descripciones'
+      );
+    });
+  </script>
+</body>
+</html>

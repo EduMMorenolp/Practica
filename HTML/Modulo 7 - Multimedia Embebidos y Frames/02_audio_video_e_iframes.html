@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Nativo y Frames Aislados</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    iframe {
+      border: 1px solid #334155;
+      border-radius: 8px;
+      background: #fff;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 7 — Ejercicio 2</span>
+    <h1>Video HTML5 Nativo e Iframe Seguro (Sandbox)</h1>
+    <p>Aprende a integrar reproductores de video y a embeber marcos aislados con sandbox.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 2.1: VIDEO NATIVO CON CONTROLES       -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-video:
+         Crea un reproductor <video id="player-tutorial" controls poster="/assets/poster.jpg" width="600">
+           - <source src="/assets/tutorial.mp4" type="video/mp4">
+           - Texto de fallback: "Tu navegador no soporta video HTML5."
+         </video>
+    -->
+    <div id="bloque-video">
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RETO 2.2: IFRAME AISLADO CON SANDBOX       -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-iframe:
+         Crea un <iframe id="frame-seguro" title="Widget de Clima" srcdoc="<h3>Clima actual: 22°C</h3>" sandbox="allow-scripts" width="100%" height="150"></iframe>
+    -->
+    <div id="bloque-iframe">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 7 Ejercicio 2 ===');
+
+      // RETO 2.1: Video
+      registrarTest(
+        'RETO 2.1 (Video con controls, poster y source)',
+        () => {
+          const v = document.getElementById('player-tutorial');
+          const s = v?.querySelector('source');
+          return v && v.hasAttribute('controls') &&
+                 v.getAttribute('poster') === '/assets/poster.jpg' &&
+                 s && s.getAttribute('src') === '/assets/tutorial.mp4' &&
+                 s.getAttribute('type') === 'video/mp4';
+        },
+        'Falta <video id="player-tutorial" controls poster="..."> con su <source>'
+      );
+
+      // RETO 2.2: Iframe con sandbox y srcdoc
+      registrarTest(
+        'RETO 2.2 (Iframe con sandbox, title y srcdoc)',
+        () => {
+          const f = document.getElementById('frame-seguro');
+          return f && f.hasAttribute('sandbox') &&
+                 f.getAttribute('title') === 'Widget de Clima' &&
+                 f.getAttribute('srcdoc')?.includes('22°C');
+        },
+        'Falta <iframe id="frame-seguro" title="Widget de Clima" srcdoc="..." sandbox="allow-scripts">'
+      );
+    });
+  </script>
+</body>
+</html>

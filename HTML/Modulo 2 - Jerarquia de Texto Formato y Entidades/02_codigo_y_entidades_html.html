@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Código Monospace y Entidades HTML</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+    pre {
+      background: #020617;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 2 — Ejercicio 2</span>
+    <h1>Código Preformateado y Entidades HTML</h1>
+    <p>Aprende a mostrar fragmentos de código, teclas de usuario y caracteres reservados usando entidades HTML.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 2.1: ELEMENTOS DE CÓDIGO Y TECLADO    -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-codigo:
+         1. Crea un párrafo <p id="atajo"> que diga: "Presiona " seguido de dos etiquetas <kbd>: <kbd>Ctrl</kbd> + <kbd>S</kbd> para guardar.
+         2. Crea un bloque <pre><code id="snippet">const total = 10;</code></pre>
+    -->
+    <div id="bloque-codigo">
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RETO 2.2: ESCAPE CON ENTIDADES HTML        -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-entidades:
+         1. En un párrafo con id="escape-tags", muestra el texto literal:
+            Usa la etiqueta <div> para agrupar.
+            (Pista: para escribir < y > debes usar &lt; y &gt;)
+         2. En un párrafo con id="copyright", muestra:
+            © 2026 Practice Hub • Precio: 25 €
+            (Pista: usa las entidades &copy; para ©, &bull; para • y &euro; para €)
+    -->
+    <div id="bloque-entidades">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 2 Ejercicio 2 ===');
+
+      // RETO 2.1: Kbd y Pre/Code
+      registrarTest(
+        'RETO 2.1 (Atajo con <kbd>)',
+        () => {
+          const p = document.getElementById('atajo');
+          const kbds = p ? p.querySelectorAll('kbd') : [];
+          return kbds.length === 2 && kbds[0].textContent === 'Ctrl' && kbds[1].textContent === 'S';
+        },
+        'Debe haber un #atajo con <kbd>Ctrl</kbd> y <kbd>S</kbd>'
+      );
+
+      registrarTest(
+        'RETO 2.1 (Bloque <pre><code>)',
+        () => {
+          const pre = document.querySelector('#bloque-codigo pre');
+          const code = pre ? pre.querySelector('code#snippet') : null;
+          return code && code.textContent.trim() === 'const total = 10;';
+        },
+        'Falta <pre><code id="snippet">const total = 10;</code></pre>'
+      );
+
+      // RETO 2.2: Entidades
+      registrarTest(
+        'RETO 2.2 (Escape de etiquetas &lt;div&gt;)',
+        () => {
+          const p = document.getElementById('escape-tags');
+          return p && p.textContent.includes('<div>') && !p.querySelector('div');
+        },
+        'Usa &lt;div&gt; para que el navegador muestre <div> sin crear una etiqueta HTML'
+      );
+
+      registrarTest(
+        'RETO 2.2 (Símbolos especiales &copy; &bull; &euro;)',
+        () => {
+          const p = document.getElementById('copyright');
+          return p && p.textContent.includes('©') && p.textContent.includes('•') && p.textContent.includes('€');
+        },
+        'Usa &copy; para ©, &bull; para • y &euro; para € en #copyright'
+      );
+    });
+  </script>
+</body>
+</html>

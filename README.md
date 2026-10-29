@@ -159,6 +159,18 @@ El repositorio está organizado por tecnologías independientes con más de **10
 - **Módulo 5:** Drizzle Queries, operadores de filtrado (`eq`, `gt`, `between`, `like`, `and`, `desc`) y uniones relacionales con `.leftJoin()`.
 - **Módulo 6:** Prisma Modelado declarativo en `schema.prisma` (`@id`, `@default`, `@relation`) y patrones de consulta type-safe con la API de Prisma Client (`findMany`, `findUnique`, `include`).
 
+### 🌐 [HTML5 & Estándares Web](./HTML/TEMARIO.md) — 10 Módulos (En Archivos .html Nativos)
+- **Módulo 1:** Estructura Raíz, DOCTYPE y Metadatos (`<head>`, `<meta charset>`, `<meta name="viewport">`, `<title>`, OpenGraph).
+- **Módulo 2:** Jerarquía de Texto, Semántica y Entidades (`<h1>-<h6>`, `<p>`, `<strong>`, `<em>`, `<blockquote>`, `<pre>`, `<code>`, entidades HTML).
+- **Módulo 3:** Enlaces, Navegación y Rutas (`<a>`, `target="_blank" rel="noopener noreferrer"`, anclas con `#id`, `mailto:`, `tel:`).
+- **Módulo 4:** Listas y Agrupación (`<ul>`, `<ol>` con `start` y `type`, `<li>` anidados, listas descriptivas `<dl>`, `<dt>`, `<dd>`).
+- **Módulo 5:** Tablas Estructuradas (`<table>`, `<caption>`, `<thead>`, `<tbody>`, `<tfoot>`, `th scope`, `colspan`, `rowspan`).
+- **Módulo 6:** Formularios y Controles de Entrada (`<form>`, `<fieldset>`, `<legend>`, `<label for>`, `<input>` variados, `optgroup`, subida de archivos `enctype="multipart/form-data"`).
+- **Módulo 7:** Multimedia, Embebidos y Frames (`<img>`, `<figure>`, `<figcaption>`, `<picture>` adaptativo, `<video>` nativo e `<iframe>` con `sandbox`).
+- **Módulo 8:** Atributos Globales y Eventos HTML Inline (`id`, `class`, `tabindex`, `accesskey`, `contenteditable`, `dir="rtl"`, `onclick`, `oninput`, `onsubmit`).
+- **Módulo 9:** Protocolo Web y Códigos de Estado HTTP (Respuestas 1XX, 2XX, 3XX, 4XX, 5XX según OverAPI, páginas 404, 201 y 500).
+- **Módulo 10:** Semántica HTML5 y Accesibilidad ARIA (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>`, `<footer>`, `<dialog>` y roles ARIA).
+
 ---
 
 ## 🖥️ Plataforma Web Interactiva

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos Inline Interactivos</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    button, input, select {
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid #475569;
+      background: #090d16;
+      color: #f8fafc;
+      font-size: 0.95rem;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 8 — Ejercicio 2</span>
+    <h1>Eventos HTML Inline: Click, Input y Submit</h1>
+    <p>Aprende a disparar acciones interactivas directamente mediante atributos de eventos.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 2.1: EVENTO ONCLICK Y ONINPUT         -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-eventos:
+         1. Crea un botón con id="btn-saludar":
+            - Atributo onclick="document.getElementById('mensaje').textContent = '¡Hola Mundo!'"
+            - Texto: "Saludar"
+         2. Un párrafo con id="mensaje" y texto inicial: "Esperando click..."
+         3. Un input con id="input-vivo":
+            - Atributo oninput="document.getElementById('espejo').textContent = this.value"
+            - Atributo placeholder="Escribe aquí..."
+         4. Un párrafo con id="espejo" y texto vacío o inicial
+    -->
+    <div id="bloque-eventos">
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RETO 2.2: ONSUBMIT PREVENT DEFAULT         -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-form-evento:
+         Crea un formulario con id="form-interactivo":
+         - Atributo onsubmit="event.preventDefault(); document.getElementById('estado-envio').textContent = 'Formulario capturado sin recargar';"
+         - Un botón <button type="submit">Enviar sin recargar</button>
+         - Un span con id="estado-envio"
+    -->
+    <div id="bloque-form-evento">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 8 Ejercicio 2 ===');
+
+      // RETO 2.1
+      registrarTest(
+        'RETO 2.1 (Botón con atributo onclick inline)',
+        () => {
+          const btn = document.getElementById('btn-saludar');
+          return btn && btn.getAttribute('onclick')?.includes('mensaje');
+        },
+        'Falta button#btn-saludar con atributo onclick="..."'
+      );
+
+      registrarTest(
+        'RETO 2.1 (Input con atributo oninput inline)',
+        () => {
+          const inp = document.getElementById('input-vivo');
+          return inp && inp.getAttribute('oninput')?.includes('espejo');
+        },
+        'Falta input#input-vivo con atributo oninput="..." actualizando #espejo'
+      );
+
+      // RETO 2.2
+      registrarTest(
+        'RETO 2.2 (Form con atributo onsubmit inline)',
+        () => {
+          const form = document.getElementById('form-interactivo');
+          return form && form.getAttribute('onsubmit')?.includes('preventDefault');
+        },
+        'Falta form#form-interactivo con atributo onsubmit="event.preventDefault(); ..."'
+      );
+    });
+  </script>
+</body>
+</html>

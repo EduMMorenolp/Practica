@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imágenes Responsivas y Figuras</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    figure {
+      margin: 0;
+      background: #090d16;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+    }
+    figcaption {
+      color: #94a3b8;
+      font-style: italic;
+      margin-top: 8px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 7 — Ejercicio 1</span>
+    <h1>Imágenes Semánticas con Figure y Formatos Adaptativos</h1>
+    <p>Aprende a estructurar imágenes con pies de foto e implementar la etiqueta <code>&lt;picture&gt;</code>.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.1: FIGURE Y FICAPTION               -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-figura:
+         Crea una estructura semántica:
+         <figure id="fig-paisaje">
+           - Una imagen <img src="/assets/montana.jpg" alt="Montañas con nieve" loading="lazy">
+           - Un pie de foto <figcaption>Fotografía de la cordillera al amanecer.</figcaption>
+         </figure>
+    -->
+    <div id="bloque-figura">
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.2: IMÁGENES ADAPTATIVAS CON PICTURE -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-picture:
+         Crea una etiqueta <picture id="foto-adaptativa">:
+           - <source srcset="/assets/banner.webp" type="image/webp">
+           - <img src="/assets/banner.jpg" alt="Banner del evento de programación">
+    -->
+    <div id="bloque-picture">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 7 Ejercicio 1 ===');
+
+      // RETO 1.1: figure y figcaption
+      registrarTest(
+        'RETO 1.1 (Figure y Figcaption asociados)',
+        () => {
+          const fig = document.getElementById('fig-paisaje');
+          const img = fig?.querySelector('img');
+          const cap = fig?.querySelector('figcaption');
+          return fig && img && cap &&
+                 img.getAttribute('src') === '/assets/montana.jpg' &&
+                 img.getAttribute('alt') === 'Montañas con nieve' &&
+                 img.getAttribute('loading') === 'lazy' &&
+                 cap.textContent.trim() === 'Fotografía de la cordillera al amanecer.';
+        },
+        'Falta <figure id="fig-paisaje"> con <img> (src, alt, loading="lazy") y <figcaption>'
+      );
+
+      // RETO 1.2: picture y source
+      registrarTest(
+        'RETO 1.2 (Picture con source WebP y fallback img)',
+        () => {
+          const pic = document.getElementById('foto-adaptativa');
+          const src = pic?.querySelector('source');
+          const img = pic?.querySelector('img');
+          return pic && src && img &&
+                 src.getAttribute('srcset') === '/assets/banner.webp' &&
+                 src.getAttribute('type') === 'image/webp' &&
+                 img.getAttribute('src') === '/assets/banner.jpg' &&
+                 Boolean(img.getAttribute('alt'));
+        },
+        'Falta <picture id="foto-adaptativa"> con <source type="image/webp"> e <img>'
+      );
+    });
+  </script>
+</body>
+</html>

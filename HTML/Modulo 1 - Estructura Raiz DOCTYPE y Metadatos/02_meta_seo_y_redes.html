@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO y OpenGraph en HTML5</title>
+
+  <!-- ========================================== -->
+  <!-- RETO 2.1: METADATOS SEO TRADICIONALES      -->
+  <!-- ========================================== -->
+  <!-- TODO:
+       1. Agrega una meta description con el contenido exacto:
+          "Guía práctica y ejercicios interactivos para dominar HTML5 y diseño web."
+       2. Agrega una meta keywords con las palabras:
+          "html5, web, desarrollo, frontend, practice"
+       3. Agrega la meta author con el autor:
+          "Practice Hub"
+  -->
+
+
+  <!-- ========================================== -->
+  <!-- RETO 2.2: TARJETAS SOCIALES OPEN GRAPH (OG)-->
+  <!-- ========================================== -->
+  <!-- TODO:
+       1. Agrega <meta property="og:title" content="Practice Hub - Dominando HTML5">
+       2. Agrega <meta property="og:description" content="Aprende y desoxida tus habilidades de maquetación web a mano.">
+       3. Agrega <meta property="og:type" content="website">
+  -->
+
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 1 — Ejercicio 2</span>
+    <h1>Metadatos SEO y Tarjetas de Redes Sociales</h1>
+    <p>Los motores de búsqueda (Google, Bing) y las aplicaciones de mensajería (WhatsApp, Telegram, Twitter, LinkedIn) leen la etiqueta <code>&lt;head&gt;</code> para generar las vistas previas de enlaces.</p>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 1 Ejercicio 2 ===');
+
+      // RETO 2.1: Metadatos SEO
+      registrarTest(
+        'RETO 2.1 (Meta Description)',
+        () => {
+          const m = document.querySelector('meta[name="description"]');
+          return m && m.getAttribute('content') === 'Guía práctica y ejercicios interactivos para dominar HTML5 y diseño web.';
+        },
+        'Falta <meta name="description" content="Guía práctica y ejercicios interactivos para dominar HTML5 y diseño web.">'
+      );
+
+      registrarTest(
+        'RETO 2.1 (Meta Keywords)',
+        () => {
+          const m = document.querySelector('meta[name="keywords"]');
+          return m && m.getAttribute('content').includes('html5') && m.getAttribute('content').includes('frontend');
+        },
+        'Falta <meta name="keywords" content="html5, web, desarrollo, frontend, practice">'
+      );
+
+      registrarTest(
+        'RETO 2.1 (Meta Author)',
+        () => {
+          const m = document.querySelector('meta[name="author"]');
+          return m && m.getAttribute('content') === 'Practice Hub';
+        },
+        'Falta <meta name="author" content="Practice Hub">'
+      );
+
+      // RETO 2.2: Open Graph
+      registrarTest(
+        'RETO 2.2 (og:title)',
+        () => {
+          const m = document.querySelector('meta[property="og:title"]');
+          return m && m.getAttribute('content') === 'Practice Hub - Dominando HTML5';
+        },
+        'Falta <meta property="og:title" content="Practice Hub - Dominando HTML5">'
+      );
+
+      registrarTest(
+        'RETO 2.2 (og:description)',
+        () => {
+          const m = document.querySelector('meta[property="og:description"]');
+          return m && m.getAttribute('content') === 'Aprende y desoxida tus habilidades de maquetación web a mano.';
+        },
+        'Falta <meta property="og:description" content="Aprende y desoxida tus habilidades de maquetación web a mano.">'
+      );
+
+      registrarTest(
+        'RETO 2.2 (og:type)',
+        () => {
+          const m = document.querySelector('meta[property="og:type"]');
+          return m && m.getAttribute('content') === 'website';
+        },
+        'Falta <meta property="og:type" content="website">'
+      );
+    });
+  </script>
+</body>
+</html>

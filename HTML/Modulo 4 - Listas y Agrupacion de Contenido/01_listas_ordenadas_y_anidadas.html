@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listas Ordenadas y Anidadas</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 4 — Ejercicio 1</span>
+    <h1>Listas Ordenadas con Atributos y Anidación Multinivel</h1>
+    <p>Aprende a configurar el inicio, la inversión y la jerarquía de listas en HTML.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.1: LISTA ORDENADA CON START Y TYPE  -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-ordenada:
+         Crea una lista ordenada <ol> con id="pasos-receta":
+         - Atributo type="1"
+         - Atributo start="3" (para que comience en el paso 3)
+         - 3 elementos <li>:
+           1. "Batir los huevos con el azúcar"
+           2. "Incorporar la harina tamizada"
+           3. "Hornear a 180 grados durante 30 minutos"
+    -->
+    <div id="bloque-ordenada">
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.2: LISTA ANIDADA MULTINIVEL         -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-anidada:
+         Crea una lista desordenada <ul id="arbol-tecnologias">:
+         - <li> con texto "Frontend" que contenga dentro un <ul> con dos <li>: "HTML" y "CSS"
+         - <li> con texto "Backend" que contenga dentro un <ul> con dos <li>: "Node.js" y "Bases de Datos"
+    -->
+    <div id="bloque-anidada">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 4 Ejercicio 1 ===');
+
+      // RETO 1.1: <ol start="3">
+      registrarTest(
+        'RETO 1.1 (Lista ordenada con start="3")',
+        () => {
+          const ol = document.getElementById('pasos-receta');
+          const lis = ol ? ol.querySelectorAll(':scope > li') : [];
+          return ol && ol.getAttribute('start') === '3' && lis.length === 3;
+        },
+        'Falta <ol id="pasos-receta" start="3"> con 3 elementos <li> directos'
+      );
+
+      // RETO 1.2: Árbol anidado
+      registrarTest(
+        'RETO 1.2 (Lista anidada de tecnologías)',
+        () => {
+          const ul = document.getElementById('arbol-tecnologias');
+          const rootLis = ul ? ul.querySelectorAll(':scope > li') : [];
+          if (rootLis.length !== 2) return false;
+
+          const frontSub = rootLis[0].querySelector('ul');
+          const backSub = rootLis[1].querySelector('ul');
+
+          const hasFront = rootLis[0].textContent.includes('Frontend') && frontSub?.children.length === 2;
+          const hasBack = rootLis[1].textContent.includes('Backend') && backSub?.children.length === 2;
+
+          return hasFront && hasBack;
+        },
+        '#arbol-tecnologias debe tener 2 <li> principales ("Frontend" y "Backend"), cada uno con su propio <ul> anidado'
+      );
+    });
+  </script>
+</body>
+</html>

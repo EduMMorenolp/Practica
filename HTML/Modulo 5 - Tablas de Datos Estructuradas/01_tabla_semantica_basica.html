@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla Semántica Básica</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #334155;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background: #090d16;
+      color: #38bdf8;
+    }
+    caption {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #94a3b8;
+      caption-side: top;
+      text-align: left;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 5 — Ejercicio 1</span>
+    <h1>Tabla de Inventario Semántica</h1>
+    <p>Construye una tabla completa con su título descriptivo (<code>caption</code>), particiones (<code>thead</code>, <code>tbody</code>, <code>tfoot</code>) y encabezados accesibles.</p>
+
+    <!-- ========================================== -->
+    <!-- RETO 1.1: TABLA SEMÁNTICA DE INVENTARIO   -->
+    <!-- ========================================== -->
+    <!-- TODO: Dentro del div #bloque-tabla:
+         Crea una tabla con id="tabla-inventario":
+         1. <caption>Inventario de Almacén</caption>
+         2. <thead> con 1 fila <tr> conteniendo 3 celdas <th scope="col">:
+            - "Artículo"
+            - "Unidades"
+            - "Precio Unitario"
+         3. <tbody> con 2 filas <tr> de datos:
+            Fila 1: <td>Monitor 24"</td>, <td>10</td>, <td>$150</td>
+            Fila 2: <td>Teclado USB</td>, <td>25</td>, <td>$30</td>
+         4. <tfoot> con 1 fila <tr>:
+            - <th scope="row">Total Artículos</th>
+            - <td>35</td>
+            - <td>-</td>
+    -->
+    <div id="bloque-tabla">
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 5 Ejercicio 1 ===');
+
+      const tbl = document.getElementById('tabla-inventario');
+
+      registrarTest(
+        'RETO 1.1 (Elemento table y caption)',
+        () => {
+          const cap = tbl?.querySelector('caption');
+          return tbl && cap && cap.textContent.trim() === 'Inventario de Almacén';
+        },
+        'Falta <table id="tabla-inventario"> con <caption>Inventario de Almacén</caption>'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Sección thead con th scope="col")',
+        () => {
+          const thead = tbl?.querySelector('thead');
+          const ths = thead ? thead.querySelectorAll('th[scope="col"]') : [];
+          return ths.length === 3;
+        },
+        'El <thead> debe tener 3 celdas <th scope="col">'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Sección tbody con 2 filas)',
+        () => {
+          const tbody = tbl?.querySelector('tbody');
+          return tbody && tbody.querySelectorAll('tr').length === 2;
+        },
+        'El <tbody> debe contener exactamente 2 filas <tr>'
+      );
+
+      registrarTest(
+        'RETO 1.1 (Sección tfoot con total)',
+        () => {
+          const tfoot = tbl?.querySelector('tfoot');
+          return tfoot && tfoot.textContent.includes('Total Artículos') && tfoot.textContent.includes('35');
+        },
+        'El <tfoot> debe tener la fila de resumen con "Total Artículos" y "35"'
+      );
+    });
+  </script>
+</body>
+</html>
