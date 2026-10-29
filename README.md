@@ -183,11 +183,15 @@ El repositorio está organizado por tecnologías independientes con más de **10
 - **Módulo 9:** Pseudo-clases y Pseudo-elementos (`:hover`, `:first-child`, `:nth-child(even)`, `::before`, `::after` con `content`).
 - **Módulo 10:** Transiciones, Transformaciones y Animaciones (`transition: transform`, `transform: translateY scale`, `@keyframes`, spinners infinitos).
 
-### 🧠 [Inteligencia Artificial & Deep Learning Moderno](./AI/TEMARIO.md) — 4 Módulos (En Archivos .py)
+### 🧠 [Inteligencia Artificial & Deep Learning Moderno](./AI/TEMARIO.md) — 8 Módulos (En Archivos .py)
 - **Módulo 1:** Fundamentos Matemáticos y Redes Neuronales desde Cero (Neurona escalar, Perceptrón simple, MLP y Backpropagation resolviendo XOR).
-- **Módulo 2:** Arquitectura Transformer y Autoatención (Positional Encoding sinusoidal, matrices $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ y Scaled Dot-Product Attention con máscara causal).
-- **Módulo 3:** Modelos de Lenguaje Causales, Alineación y DPO (Proyección a logits, muestreo con temperatura y top-k, y función de pérdida Direct Preference Optimization).
-- **Módulo 4:** Arquitectura y Desarrollo Sistemático de Agentes de IA (Crítica a la fragilidad multiagente, arquitectura Playbook en 3 capas: Process, Toolbox, Proof, y protocolo Delegation Loop).
+- **Módulo 2:** Tokenización y Representación Textual (Algoritmo BPE desde cero, lookup de embeddings y similitud coseno).
+- **Módulo 3:** La Arquitectura Transformer y Autoatención (Positional Encoding sinusoidal, matrices $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ y Scaled Dot-Product Attention con máscara causal).
+- **Módulo 4:** Generación Autorregresiva, Muestreo y Alineación DPO (Proyección a logits, temperatura, top-k y función de pérdida Direct Preference Optimization).
+- **Módulo 5:** Sistemas RAG y Búsqueda Vectorial (Chunking con solapamiento, VectorStore en memoria y aumentación de contexto).
+- **Módulo 6:** Tool Calling y Ciclo ReAct (Esquemas JSON Schema, validación de tipos, despachador y bucle ReAct interactivo).
+- **Módulo 7:** Arquitectura y Desarrollo Sistemático de Agentes de IA (Crítica a la fragilidad multiagente, arquitectura Playbook en 3 capas: Process, Toolbox, Proof, y Delegation Loop).
+- **Módulo 8:** Proyectos Prácticos Integradores de IA (Mini-GPT generador autorregresivo paso a paso y Asistente Autónomo con RAG y herramientas).
 
 ---
 
