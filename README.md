@@ -183,6 +183,20 @@ El repositorio está organizado por tecnologías independientes con más de **10
 - **Módulo 9:** Pseudo-clases y Pseudo-elementos (`:hover`, `:first-child`, `:nth-child(even)`, `::before`, `::after` con `content`).
 - **Módulo 10:** Transiciones, Transformaciones y Animaciones (`transition: transform`, `transform: translateY scale`, `@keyframes`, spinners infinitos).
 
+### 🐍 [Python Moderno & Librería Estándar](./Python/TEMARIO.md) — 12 Módulos (En Archivos .py)
+- **Módulo 1:** Sintaxis Básica, Variables, Tipos Primitivos y Operadores (`int`, `float`, `bool`, `str`, `NoneType`, `//`, `%`, `is`).
+- **Módulo 2:** Cadenas de Texto (Strings) y Métodos de Manipulación (`strip`, `split`, `join`, `partition`, `find`, `replace`).
+- **Módulo 3:** Formateo de Texto e Interpolación (F-Strings, método `.format()` y especificadores clásicos `%d`, `%f`, `%x`, `%o`).
+- **Módulo 4:** Listas, Tuplas, Indexación y Slicing (Mutabilidad vs inmutabilidad, slicing `[start:stop:step]`, desempaquetado `*`).
+- **Módulo 5:** Diccionarios y Mapeos (`get`, `setdefault`, `keys`, `values`, `items`, `pop`, `update`, acceso $O(1)$).
+- **Módulo 6:** Conjuntos (`set`) y Álgebra de Conjuntos (Unión `|`, intersección `&`, diferencia `-`, diferencia simétrica `^`, `discard`).
+- **Módulo 7:** Estructuras de Control e Iteración (Operador ternario, `break`, `continue`, cláusula `for-else`, `enumerate`, `zip`, `range`).
+- **Módulo 8:** Funciones, Argumentos Flexibles y Lambdas (`*args`, `**kwargs`, evitar defaults mutables, expresiones lambda).
+- **Módulo 9:** Manejo de Archivos (File I/O) y Context Managers (Modos `'r'`, `'w'`, `'a'`, gestor `with open`, punteros `seek` y `tell`).
+- **Módulo 10:** Programación Orientada a Objetos y Métodos Especiales (`__init__`, `__str__`, `__repr__`, `__eq__`, `__lt__`, `__len__`, `__call__`).
+- **Módulo 11:** Librería Estándar: Matemáticas, Aleatoriedad y Fechas (`math.hypot`, `math.pi`, `random.randint`, `sample`, `datetime`, `timedelta`, `strftime`).
+- **Módulo 12:** Librería Estándar: Sistema Operativo y Rutas (`sys.argv`, `sys.platform`, `os.environ`, `os.path.join`, `os.path.splitext`).
+
 ### 🧠 [Inteligencia Artificial & Deep Learning Moderno](./AI/TEMARIO.md) — 8 Módulos (En Archivos .py)
 - **Módulo 1:** Fundamentos Matemáticos y Redes Neuronales desde Cero (Neurona escalar, Perceptrón simple, MLP y Backpropagation resolviendo XOR).
 - **Módulo 2:** Tokenización y Representación Textual (Algoritmo BPE desde cero, lookup de embeddings y similitud coseno).
