@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selectores de Atributos y Especificidad</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+
+    /* ========================================== */
+    /* RETO 2.1: SELECTORES DE ATRIBUTOS (OverAPI)*/
+    /* ========================================== */
+    /* TODO: Escribe tus reglas CSS a mano aquí:
+       1. Apunta a todos los enlaces cuyo href empiece por "https://" (a[href^="https://"]):
+          - Dale color: rgb(74, 222, 128); (verde seguro)
+       2. Apunta a los enlaces cuyo href termine en ".pdf" (a[href$=".pdf"]):
+          - Dale color: rgb(248, 113, 113); (rojo documento)
+       3. Apunta a cualquier input que tenga el atributo disabled (input[disabled]):
+          - Dale opacity: 0.5;
+       4. Especificidad: Haz que el párrafo con id #parrafo-conflicto gane color: rgb(236, 72, 153);
+          sobreescribiendo la clase genérica .color-azul sin usar !important.
+    */
+    .color-azul {
+      color: rgb(59, 130, 246);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 1 — Ejercicio 2</span>
+    <h1>Selectores de Atributos y Regla de Cascada</h1>
+    <p>Aprende a filtrar por patrones de atributos y a resolver colisiones de especificidad de forma limpia.</p>
+
+    <div id="sandbox-atributos">
+      <p><a id="link-seguro" href="https://w3.org">Sitio seguro HTTPS</a></p>
+      <p><a id="link-doc" href="/descargas/temario.pdf">Descargar Temario PDF</a></p>
+      <p><input id="input-bloqueado" type="text" value="Campo deshabilitado" disabled></p>
+
+      <p id="parrafo-conflicto" class="color-azul">
+        Este párrafo debe tener color rosa (rgb(236, 72, 153)) gracias a la mayor especificidad del ID sobre la clase.
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 1 Ejercicio 2 CSS ===');
+
+      // 1. a[href^="https://"]
+      registrarTest(
+        'RETO 2.1 (Prefijo de atributo [href^="https://"])',
+        () => {
+          const a = document.getElementById('link-seguro');
+          const color = window.getComputedStyle(a).color;
+          return color.includes('74, 222, 128') || color === 'rgb(74, 222, 128)';
+        },
+        'Aplica a[href^="https://"] { color: rgb(74, 222, 128); }'
+      );
+
+      // 2. a[href$=".pdf"]
+      registrarTest(
+        'RETO 2.1 (Sufijo de atributo [href$=".pdf"])',
+        () => {
+          const a = document.getElementById('link-doc');
+          const color = window.getComputedStyle(a).color;
+          return color.includes('248, 113, 113') || color === 'rgb(248, 113, 113)';
+        },
+        'Aplica a[href$=".pdf"] { color: rgb(248, 113, 113); }'
+      );
+
+      // 3. input[disabled]
+      registrarTest(
+        'RETO 2.1 (Atributo booleano [disabled])',
+        () => {
+          const inp = document.getElementById('input-bloqueado');
+          return window.getComputedStyle(inp).opacity === '0.5';
+        },
+        'Aplica input[disabled] { opacity: 0.5; }'
+      );
+
+      // 4. Especificidad #parrafo-conflicto
+      registrarTest(
+        'RETO 2.1 (Especificidad de ID sobre Clase)',
+        () => {
+          const p = document.getElementById('parrafo-conflicto');
+          const color = window.getComputedStyle(p).color;
+          return color.includes('236, 72, 153') || color === 'rgb(236, 72, 153)';
+        },
+        'Aplica #parrafo-conflicto { color: rgb(236, 72, 153); }'
+      );
+    });
+  </script>
+</body>
+</html>

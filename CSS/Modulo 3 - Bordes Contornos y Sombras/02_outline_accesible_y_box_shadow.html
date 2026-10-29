@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outline Accesible y Box-Shadow</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+
+    /* ========================================== */
+    /* RETO 2.1: OUTLINE Y BOX-SHADOW             */
+    /* ========================================== */
+    /* TODO: Escribe tus reglas CSS a mano aquí abajo:
+       1. Configura el anillo accesible de #input-foco:
+          - outline: 2px solid rgb(56, 189, 248);
+          - outline-offset: 4px;
+       2. Configura la sombra de elevación de #tarjeta-elevada:
+          - box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+       3. Configura la sombra interior de #caja-hundida:
+          - box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+    */
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 3 — Ejercicio 2</span>
+    <h1>Anillos de Enfoque (Outline) y Elevación (Box-Shadow)</h1>
+    <p>Aprende a diseñar indicadores de foco que no desplazan el layout y sombras externas e internas (<code>inset</code>).</p>
+
+    <div id="sandbox-sombras" style="display: flex; flex-direction: column; gap: 24px;">
+      <div>
+        <label for="input-foco" style="display: block; margin-bottom: 8px;">Campo con anillo outline separado:</label>
+        <input id="input-foco" type="text" value="Elemento con contorno visible" style="padding: 8px 12px; background: #090d16; color: #fff; border: 1px solid #334155; border-radius: 6px;">
+      </div>
+
+      <div id="tarjeta-elevada" style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155;">
+        Tarjeta con elevación tridimensional externa.
+      </div>
+
+      <div id="caja-hundida" style="background: #090d16; padding: 20px; border-radius: 8px; border: 1px solid #1e293b;">
+        Caja con efecto de ranura hundida (inset).
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 3 Ejercicio 2 CSS ===');
+
+      // 1. #input-foco outline y outline-offset
+      registrarTest(
+        'RETO 2.1 (outline: 2px solid y outline-offset: 4px)',
+        () => {
+          const el = document.getElementById('input-foco');
+          const cs = window.getComputedStyle(el);
+          return cs.outlineWidth === '2px' && cs.outlineOffset === '4px' && cs.outlineColor.includes('56, 189, 248');
+        },
+        'Aplica #input-foco { outline: 2px solid rgb(56, 189, 248); outline-offset: 4px; }'
+      );
+
+      // 2. #tarjeta-elevada box-shadow externa
+      registrarTest(
+        'RETO 2.1 (box-shadow externa)',
+        () => {
+          const el = document.getElementById('tarjeta-elevada');
+          const bs = window.getComputedStyle(el).boxShadow;
+          return bs !== 'none' && bs.includes('20px') && !bs.includes('inset');
+        },
+        'Aplica #tarjeta-elevada { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }'
+      );
+
+      // 3. #caja-hundida box-shadow inset
+      registrarTest(
+        'RETO 2.1 (box-shadow: inset ...)',
+        () => {
+          const el = document.getElementById('caja-hundida');
+          const bs = window.getComputedStyle(el).boxShadow;
+          return bs !== 'none' && bs.includes('inset');
+        },
+        'Aplica #caja-hundida { box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6); }'
+      );
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box-Sizing y Márgenes en CSS</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+
+    /* ========================================== */
+    /* RETO 1.1: BOX-SIZING Y MÁRGENES SHORTHAND  */
+    /* ========================================== */
+    /* TODO: Escribe tus reglas CSS a mano aquí abajo:
+       1. Configura la caja #caja-border-box:
+          - box-sizing: border-box;
+          - width: 300px;
+          - padding: 20px;
+          - border: 5px solid rgb(59, 130, 246);
+       2. Configura el contenedor centrado #caja-centrada:
+          - width: 400px;
+          - margin: 0 auto;
+          - padding: 15px 30px; /* 15px arriba/abajo, 30px izq/der */
+    */
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 2 — Ejercicio 1</span>
+    <h1>Box-Sizing y Notación Taquigráfica de Márgenes</h1>
+    <p>Aprende a controlar el ancho exacto con <code>border-box</code> y a centrar bloques con <code>margin: 0 auto</code>.</p>
+
+    <div id="sandbox-cajas">
+      <div id="caja-border-box" style="background: #090d16; margin-bottom: 20px;">
+        Esta caja debe medir exactamente 300px de ancho total en pantalla.
+      </div>
+
+      <div id="caja-centrada" style="background: #090d16; border: 1px dashed #38bdf8;">
+        Esta caja debe estar centrada horizontalmente y medir 400px de ancho.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 2 Ejercicio 1 CSS ===');
+
+      // 1. #caja-border-box
+      registrarTest(
+        'RETO 1.1 (box-sizing: border-box)',
+        () => {
+          const el = document.getElementById('caja-border-box');
+          const cs = window.getComputedStyle(el);
+          return cs.boxSizing === 'border-box' && Math.round(el.getBoundingClientRect().width) === 300;
+        },
+        'Aplica #caja-border-box { box-sizing: border-box; width: 300px; padding: 20px; border: 5px solid ...; }'
+      );
+
+      // 2. #caja-centrada
+      registrarTest(
+        'RETO 1.1 (Centrado horizontal con margin: 0 auto)',
+        () => {
+          const el = document.getElementById('caja-centrada');
+          const cs = window.getComputedStyle(el);
+          return cs.width === '400px' && cs.paddingTop === '15px' && cs.paddingLeft === '30px';
+        },
+        'Aplica #caja-centrada { width: 400px; margin: 0 auto; padding: 15px 30px; }'
+      );
+    });
+  </script>
+</body>
+</html>

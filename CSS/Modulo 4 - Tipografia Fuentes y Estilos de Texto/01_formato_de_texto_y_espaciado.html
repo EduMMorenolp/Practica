@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formato de Texto y Espaciado Tipográfico</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+
+    /* ========================================== */
+    /* RETO 1.1: FORMATO TIPOGRÁFICO Y ESPACIADO  */
+    /* ========================================== */
+    /* TODO: Escribe tus reglas CSS a mano aquí abajo:
+       1. Configura el titular #titulo-destacado:
+          - text-align: center;
+          - text-transform: uppercase;
+          - letter-spacing: 2px;
+       2. Configura el cuerpo de lectura #parrafo-legible:
+          - line-height: 1.8;
+          - font-size: 18px;
+       3. Configura el enlace limpio #link-sin-subrayado:
+          - text-decoration: none;
+          - color: rgb(56, 189, 248);
+    */
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 4 — Ejercicio 1</span>
+    <h1>Jerarquía Tipográfica, Interlineado y Espaciado</h1>
+    <p>Aprende a transformar mayúsculas, ajustar el tracking de letras y optimizar la legibilidad de lectura.</p>
+
+    <div id="sandbox-tipografia">
+      <h2 id="titulo-destacado">Tipografía Profesional en CSS</h2>
+
+      <p id="parrafo-legible">
+        Un interlineado amplio y un tamaño de letra adecuado evitan la fatiga visual y mejoran la retención de lectura en pantallas de alta densidad de píxeles.
+      </p>
+
+      <p>
+        <a id="link-sin-subrayado" href="#">Enlace moderno sin subrayado por defecto</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 4 Ejercicio 1 CSS ===');
+
+      // 1. #titulo-destacado
+      registrarTest(
+        'RETO 1.1 (text-align: center, uppercase y letter-spacing: 2px)',
+        () => {
+          const el = document.getElementById('titulo-destacado');
+          const cs = window.getComputedStyle(el);
+          return cs.textAlign === 'center' &&
+                 cs.textTransform === 'uppercase' &&
+                 cs.letterSpacing === '2px';
+        },
+        'Aplica #titulo-destacado { text-align: center; text-transform: uppercase; letter-spacing: 2px; }'
+      );
+
+      // 2. #parrafo-legible
+      registrarTest(
+        'RETO 1.1 (font-size: 18px y line-height)',
+        () => {
+          const el = document.getElementById('parrafo-legible');
+          const cs = window.getComputedStyle(el);
+          return cs.fontSize === '18px' && Math.round(parseFloat(cs.lineHeight)) >= 30;
+        },
+        'Aplica #parrafo-legible { font-size: 18px; line-height: 1.8; }'
+      );
+
+      // 3. #link-sin-subrayado
+      registrarTest(
+        'RETO 1.1 (text-decoration: none)',
+        () => {
+          const el = document.getElementById('link-sin-subrayado');
+          const cs = window.getComputedStyle(el);
+          return cs.textDecorationLine === 'none' && cs.color.includes('56, 189, 248');
+        },
+        'Aplica #link-sin-subrayado { text-decoration: none; color: rgb(56, 189, 248); }'
+      );
+    });
+  </script>
+</body>
+</html>

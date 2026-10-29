@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dimensiones y Control de Desbordamiento</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+
+    /* ========================================== */
+    /* RETO 2.1: DIMENSIONES Y OVERFLOW AUTO      */
+    /* ========================================== */
+    /* TODO: Escribe tus reglas CSS a mano aquí:
+       1. Configura la caja con scroll #caja-scrollable:
+          - height: 120px;
+          - overflow-y: auto;
+          - border: 1px solid rgb(71, 85, 105);
+          - padding: 10px;
+       2. Configura el bloque responsivo #caja-limites:
+          - max-width: 500px;
+          - min-height: 80px;
+    */
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 2 — Ejercicio 2</span>
+    <h1>Dimensiones Elásticas y Desbordamiento (Overflow)</h1>
+    <p>Aprende a crear contenedores con scroll vertical automático y a aplicar límites con <code>max-width</code> y <code>min-height</code>.</p>
+
+    <div id="sandbox-dimensiones">
+      <div id="caja-scrollable" style="background: #090d16; margin-bottom: 20px;">
+        <p>Línea 1: Contenido extenso para provocar scroll.</p>
+        <p>Línea 2: El overflow-y: auto agregará barra de scroll si el texto excede los 120px de alto.</p>
+        <p>Línea 3: Aprendiendo CSS nativo paso a paso.</p>
+        <p>Línea 4: Práctica de estilos a mano con retroalimentación instantánea.</p>
+        <p>Línea 5: Última línea de prueba.</p>
+      </div>
+
+      <div id="caja-limites" style="background: #090d16; border: 1px solid #334155; padding: 12px;">
+        Esta caja no superará nunca los 500px de ancho y mantendrá al menos 80px de alto.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 2 Ejercicio 2 CSS ===');
+
+      // 1. #caja-scrollable
+      registrarTest(
+        'RETO 2.1 (height: 120px y overflow-y: auto)',
+        () => {
+          const el = document.getElementById('caja-scrollable');
+          const cs = window.getComputedStyle(el);
+          return cs.height === '120px' && (cs.overflowY === 'auto' || cs.overflowY === 'scroll');
+        },
+        'Aplica #caja-scrollable { height: 120px; overflow-y: auto; }'
+      );
+
+      // 2. #caja-limites
+      registrarTest(
+        'RETO 2.1 (max-width: 500px y min-height: 80px)',
+        () => {
+          const el = document.getElementById('caja-limites');
+          const cs = window.getComputedStyle(el);
+          return cs.maxWidth === '500px' && cs.minHeight === '80px';
+        },
+        'Aplica #caja-limites { max-width: 500px; min-height: 80px; }'
+      );
+    });
+  </script>
+</body>
+</html>

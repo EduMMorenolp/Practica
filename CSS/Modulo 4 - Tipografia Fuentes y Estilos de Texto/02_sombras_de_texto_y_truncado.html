@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sombras de Texto y Truncado con Puntos Suspensivos</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+
+    /* ========================================== */
+    /* RETO 2.1: TEXT-SHADOW Y TEXT-OVERFLOW      */
+    /* ========================================== */
+    /* TODO: Escribe tus reglas CSS a mano aquí abajo:
+       1. Configura la sombra de texto de #titulo-neon:
+          - text-shadow: 0 0 10px rgb(56, 189, 248);
+          - font-size: 32px;
+       2. Configura el truncado de una sola línea en #texto-largo:
+          - width: 250px;
+          - white-space: nowrap;
+          - overflow: hidden;
+          - text-overflow: ellipsis;
+    */
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 4 — Ejercicio 2</span>
+    <h1>Sombras Tipográficas (Text-Shadow) y Truncado (Ellipsis)</h1>
+    <p>Aprende a crear efectos de resplandor tipográfico y a cortar textos desbordados con <code>text-overflow: ellipsis</code>.</p>
+
+    <div id="sandbox-efectos" style="display: flex; flex-direction: column; gap: 20px;">
+      <h2 id="titulo-neon" style="color: #fff; margin: 0;">
+        Efecto Neón Brillante
+      </h2>
+
+      <div style="background: #090d16; padding: 15px; border-radius: 8px; border: 1px solid #334155;">
+        <p style="margin-bottom: 6px; color: #94a3b8; font-size: 0.85rem;">Contenedor con límite de 250px:</p>
+        <div id="texto-largo" style="background: #1e293b; padding: 8px; border-radius: 4px;">
+          Este es un texto excesivamente largo que debe truncarse limpiamente con puntos suspensivos sin romper el diseño.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 4 Ejercicio 2 CSS ===');
+
+      // 1. #titulo-neon text-shadow
+      registrarTest(
+        'RETO 2.1 (text-shadow brillante)',
+        () => {
+          const el = document.getElementById('titulo-neon');
+          const ts = window.getComputedStyle(el).textShadow;
+          return ts !== 'none' && ts.includes('10px') && ts.includes('56, 189, 248');
+        },
+        'Aplica #titulo-neon { text-shadow: 0 0 10px rgb(56, 189, 248); }'
+      );
+
+      // 2. #texto-largo ellipsis
+      registrarTest(
+        'RETO 2.1 (Truncado con white-space: nowrap y text-overflow: ellipsis)',
+        () => {
+          const el = document.getElementById('texto-largo');
+          const cs = window.getComputedStyle(el);
+          return cs.width === '250px' &&
+                 cs.whiteSpace === 'nowrap' &&
+                 cs.overflow === 'hidden' &&
+                 cs.textOverflow === 'ellipsis';
+        },
+        'Aplica #texto-largo { width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }'
+      );
+    });
+  </script>
+</body>
+</html>
