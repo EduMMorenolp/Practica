@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pseudo-elementos ::before y ::after</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+
+    /* ========================================== */
+    /* RETO 2.1: CONTENIDO GENERADO CON ::BEFORE  */
+    /* ========================================== */
+    /* TODO: Escribe tus reglas CSS a mano aquí abajo:
+       1. Agrega un ícono prefijo al título #aviso-importante con ::before:
+          - #aviso-importante::before { content: "⚡ "; color: rgb(234, 179, 8); }
+       2. Agrega un sufijo decorativo a los elementos de clase .badge-nuevo con ::after:
+          - .badge-nuevo::after { content: " [NUEVO]"; font-size: 0.75rem; color: rgb(74, 222, 128); }
+    */
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 9 — Ejercicio 2</span>
+    <h1>Contenido Generado con ::before y ::after</h1>
+    <p>Aprende a inyectar adornos, íconos y etiquetas de estado con la propiedad <code>content</code> de CSS.</p>
+
+    <div id="sandbox-pseudoelementos" style="display: flex; flex-direction: column; gap: 15px;">
+      <h2 id="aviso-importante" style="margin: 0;">
+        Notificación de Sistema
+      </h2>
+
+      <div>
+        <span class="badge-nuevo" style="background: #090d16; padding: 6px 12px; border: 1px solid #334155; border-radius: 4px;">
+          Módulo de CSS Grid
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 9 Ejercicio 2 CSS ===');
+
+      // 1. #aviso-importante::before
+      registrarTest(
+        'RETO 2.1 (Pseudo-elemento #aviso-importante::before con content: "⚡ ")',
+        () => {
+          const el = document.getElementById('aviso-importante');
+          const cs = window.getComputedStyle(el, '::before');
+          return cs.content.includes('⚡') || cs.content.includes('\\26A1');
+        },
+        'Aplica #aviso-importante::before { content: "⚡ "; color: rgb(234, 179, 8); }'
+      );
+
+      // 2. .badge-nuevo::after
+      registrarTest(
+        'RETO 2.1 (Pseudo-elemento .badge-nuevo::after con content: " [NUEVO]")',
+        () => {
+          const el = document.querySelector('.badge-nuevo');
+          const cs = window.getComputedStyle(el, '::after');
+          return cs.content.includes('NUEVO');
+        },
+        'Aplica .badge-nuevo::after { content: " [NUEVO]"; color: rgb(74, 222, 128); }'
+      );
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Template Areas</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    #suite-resultados {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    .test-pass { color: #4ade80; margin: 4px 0; }
+    .test-fail { color: #f87171; margin: 4px 0; }
+
+    /* ========================================== */
+    /* RETO 2.1: GRID TEMPLATE AREAS             */
+    /* ========================================== */
+    /* TODO: Escribe tus reglas CSS a mano aquí abajo:
+       1. Configura el contenedor #dashboard-layout:
+          - display: grid;
+          - grid-template-columns: 180px 1fr;
+          - grid-template-rows: 50px 120px 40px;
+          - grid-template-areas:
+              "header  header"
+              "sidebar main"
+              "footer  footer";
+          - gap: 10px;
+       2. Asigna cada área a su respectivo elemento hijo:
+          - #area-header { grid-area: header; }
+          - #area-sidebar { grid-area: sidebar; }
+          - #area-main { grid-area: main; }
+          - #area-footer { grid-area: footer; }
+    */
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Módulo 8 — Ejercicio 2</span>
+    <h1>Maquetado Semántico con Grid-Template-Areas</h1>
+    <p>Aprende a distribuir paneles visuales declarando un mapa de palabras en CSS.</p>
+
+    <div id="sandbox-areas">
+      <div id="dashboard-layout">
+        <header id="area-header" style="background: #2563eb; padding: 10px; border-radius: 4px;">Cabecera (Header)</header>
+        <aside id="area-sidebar" style="background: #090d16; padding: 10px; border: 1px solid #334155; border-radius: 4px;">Sidebar</aside>
+        <main id="area-main" style="background: #1e293b; padding: 10px; border: 1px solid #475569; border-radius: 4px;">Contenido Principal (Main)</main>
+        <footer id="area-footer" style="background: #090d16; padding: 10px; border-radius: 4px; border: 1px solid #334155;">Pie de Página (Footer)</footer>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Suite de Validación Automática</h2>
+    <div id="suite-resultados"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🧪 SUITE DE VALIDACIÓN AUTOMÁTICA (no tocar) -->
+  <!-- ========================================== -->
+  <script>
+    function registrarTest(nombre, condicion, pista) {
+      const suite = document.getElementById('suite-resultados');
+      let esValido = false;
+      try {
+        esValido = Boolean(typeof condicion === 'function' ? condicion() : condicion);
+      } catch (e) {
+        esValido = false;
+      }
+
+      const item = document.createElement('div');
+      item.className = esValido ? 'test-pass' : 'test-fail';
+      item.textContent = (esValido ? '✔ ' : '❌ ') + nombre + (esValido ? '' : ' ➔ ' + pista);
+      suite.appendChild(item);
+      console.log(item.textContent);
+      return esValido;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('=== Comprobando Módulo 8 Ejercicio 2 CSS ===');
+
+      // 1. #dashboard-layout grid-template-areas
+      registrarTest(
+        'RETO 2.1 (grid-template-areas configurado)',
+        () => {
+          const el = document.getElementById('dashboard-layout');
+          const cs = window.getComputedStyle(el);
+          return cs.display === 'grid' && cs.gridTemplateAreas.includes('header') && cs.gridTemplateAreas.includes('sidebar');
+        },
+        'Aplica #dashboard-layout { display: grid; grid-template-areas: "header header" "sidebar main" "footer footer"; }'
+      );
+
+      // 2. grid-area asignado a los hijos
+      registrarTest(
+        'RETO 2.1 (Asignación de grid-area a hijos)',
+        () => {
+          const h = window.getComputedStyle(document.getElementById('area-header')).gridArea;
+          const s = window.getComputedStyle(document.getElementById('area-sidebar')).gridArea;
+          const m = window.getComputedStyle(document.getElementById('area-main')).gridArea;
+          const f = window.getComputedStyle(document.getElementById('area-footer')).gridArea;
+          return h.includes('header') && s.includes('sidebar') && m.includes('main') && f.includes('footer');
+        },
+        'Asigna grid-area: header, sidebar, main, footer a cada elemento hijo'
+      );
+    });
+  </script>
+</body>
+</html>

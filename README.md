@@ -171,6 +171,18 @@ El repositorio está organizado por tecnologías independientes con más de **10
 - **Módulo 9:** Protocolo Web y Códigos de Estado HTTP (Respuestas 1XX, 2XX, 3XX, 4XX, 5XX según OverAPI, páginas 404, 201 y 500).
 - **Módulo 10:** Semántica HTML5 y Accesibilidad ARIA (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>`, `<footer>`, `<dialog>` y roles ARIA).
 
+### 🎨 [CSS & Diseño Web Moderno](./CSS/TEMARIO.md) — 10 Módulos (En Archivos .html con Style Nativos)
+- **Módulo 1:** Selectores CSS y Especificidad (`*`, tipo, clase, id, combinadores `>`, `+`, `~`, atributos `[attr^=]`, `[attr$=]`).
+- **Módulo 2:** Box Model y Dimensionamiento (`box-sizing: border-box`, `margin: 0 auto`, `padding`, `min/max-width`, `overflow-y: auto`).
+- **Módulo 3:** Bordes, Contornos y Sombras (`border`, `border-radius: 50%`, píldoras, `outline`, `outline-offset`, `box-shadow` e `inset`).
+- **Módulo 4:** Tipografía, Fuentes y Estilos de Texto (`line-height`, `letter-spacing`, `text-transform`, `text-shadow`, `text-overflow: ellipsis`).
+- **Módulo 5:** Colores, Fondos y Degradados (`background-size: cover`, `background-position`, `linear-gradient`, `radial-gradient`).
+- **Módulo 6:** Posicionamiento y Flujo Normal (`position: relative`, `absolute`, `sticky`, `fixed`, control de capas con `z-index`).
+- **Módulo 7:** Flexbox Diseño Unidimensional (`display: flex`, `justify-content`, `align-items`, `gap`, `flex-wrap: wrap`, `flex-grow`).
+- **Módulo 8:** CSS Grid Diseño Bidimensional (`display: grid`, `repeat(3, 1fr)`, `gap`, `grid-column: span 2`, `grid-template-areas`).
+- **Módulo 9:** Pseudo-clases y Pseudo-elementos (`:hover`, `:first-child`, `:nth-child(even)`, `::before`, `::after` con `content`).
+- **Módulo 10:** Transiciones, Transformaciones y Animaciones (`transition: transform`, `transform: translateY scale`, `@keyframes`, spinners infinitos).
+
 ---
 
 ## 🖥️ Plataforma Web Interactiva
